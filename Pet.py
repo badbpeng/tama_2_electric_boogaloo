@@ -1,54 +1,79 @@
 class Pet:
-    def __init__(self, hunger, restlessness, noise):
-        self.maxHunger = hunger
-        self.curHunger = hunger # pet starts full
-        self.maxRestlessness = restlessness
-        self.curRestlessness = 0 # pet starts tired
+    def __init__(self, name, noise):
+        self.hunger = 10 # pet starts full (/10)
+        self.health = 10 # pet starts healthy (/10)
+        self.happiness = 10 # pet starts happy (/10)
         self.sound = noise # string, pet's default noise (i.e. chirp)
+        self.name = name # string, pet's name
+
         # [idea] add data base of images for each pet
         # have data member called curImage which selects an image from the database
         # i.e. pet is hungry, curImage is the "feed me" image
 
-    # does not check pet's restlessness
-    # game must prevent user (or punish) from selecting a trick that will lower curRestlessness below 0
-    # each trick has an amount of restlessness it removes
-    def doTrick(self, trick):
-        self.curRestlessness -= trick
+    # game logic must prevent user from playing when happiness = 10
+    def play(self):
+        self.happiness += 1
 
-    def addRestlessness(self):
-        if (self.curRestlessness == self.maxRestlessness):
-            self.hyperactive()
+    def decrease_happiness(self):
+        if (self.happiness == 0):
+            self.leave()
         else:
-            self.curRestlessness += 1 # maybe different pets get more restless (i.e. humming bird gets +3 restlessness each hour)
+            self.happiness -= 1
 
-    # think of some punishment for ignoring a pet's restlessness
-    def hyperactive():
-        return
+    # returns a string based on the pet's degree of happiness
+    def check_happiness(self):
+        if (self.happiness == 10):
+            return self.name + " is very happy."
+        elif (self.happiness > 5):
+            return self.name + " is pleased."
+        elif (self.hapiness > 1):
+            return self.name + " is unhappy."
+        else:
+            return self.name + " is very sad!"
 
-    # getter method for restlessness
-    # maybe add tired thresholds (i.e. when cur is half max...)
-    def isTired(self):
-        if (self.curRestlessness == 0):
-            return True
-        return False
-
-    def makeSound(self):
+    # returns a string, the pet's noise
+    def make_sound(self):
         return self.sound
 
-    # maybe add hunger thresholds (0 is starving, when cur is quarter of max pet is really hungry.. etc.)
-    def isHungry(self):
-        if (self.curHunger == 0):
-            return True
-        return False
+    # game logic must prevent user from feeding when hungry = 10
+    def eat(self):
+        self.hunger += 1
 
-    # does not check pets curHunger
-    # game must prevent user (or punish) from selecting a food that will raise curHunger above maxHunger
-    # different food will restore different hunger (i.e. porkchop adds +4 hunger)
-    def eat(self, food):
-        self.curHunger += food
-
-    def removeHunger(self):
-        if (self.curHunger == 0):
-            self.starving()
+    # decrease hunger doesn't sound right, could use a better method name
+    def decrease_hunger(self):
+        if (self.hunger == 0):
+            self.leave()
         else:
-            self.curHunger += 1 # maybe different pets get more hungry (i.e. ostrich gets +3 hunger each hour)
+            self.hunger -= 1
+
+    # returns a string based on the pet's degree of hunger
+    def check_hunger(self):
+        if (self.hunger == 10):
+            return self.name + " is full."
+        elif (self.hunger > 5):
+            return self.name + " is content."
+        elif (self.hunger > 1):
+            return self.name + " is hungry."
+        else:
+            return self.name + " is starving!"
+
+    # game logic must prevent user from cleaning when health = 10
+    def clean(self):
+        self.health += 1
+
+    def decrease_health(self):
+        if (self.health == 0):
+            self.leave()
+        else:
+            self.health -= 1
+
+    # returns a string based on the pet's degree of health/cleanliness
+    def check_health(self):
+        if (self.health == 10):
+            return self.name + " is fabulous!"
+        elif (self.health > 5):
+            return self.name + " is clean."
+        elif (self.health > 1):
+            return self.name + " is dirty."
+        else:
+            return self.name + " is filthy!"
