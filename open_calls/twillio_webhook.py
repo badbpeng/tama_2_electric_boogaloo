@@ -8,6 +8,7 @@ from tools.logging import logger
 from things.actors import actor
 
 
+import re
 import random
 import json
 import pickle
@@ -44,11 +45,17 @@ def handle_request():
 
     sent_input = str(request.form['Body']).lower()
     if sent_input in CORPUS['input']:
-        response = random.choice(CORPUS['input'][sent_input])
+        
+        if(re.match(r'.png',CORPUS['input'][sent_input])): #if response will be an image
+            response.media(CORPUS['input'][sent_input]) #call png file from repo and send it as media
+        else:
+            response = random.choice(CORPUS['input'][sent_input]) #normal text response
     else:
         CORPUS['input'][sent_input] = ['DID NOT FIND']
         with open('chatbot_corpus.json', 'w') as myfile:
             myfile.write(json.dumps(CORPUS, indent=4 ))
+
+    #response.media("Shimae-naga_joy.png") #add picture
 
     logger.debug(response)
 
