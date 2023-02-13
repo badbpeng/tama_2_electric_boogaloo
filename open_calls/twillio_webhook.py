@@ -47,6 +47,7 @@ def handle_request():
     if sent_input in CORPUS['input']:
         
         if(re.match(r'.png',CORPUS['input'][sent_input])): #if response will be an image
+            print("inside regex logic")
             response.media(CORPUS['input'][sent_input]) #call png file from repo and send it as media
         else:
             response = random.choice(CORPUS['input'][sent_input]) #normal text response
