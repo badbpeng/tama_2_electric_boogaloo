@@ -47,12 +47,11 @@ def handle_request():
     resp_str = CORPUS['input'][sent_input]
     print(resp_str)
 
+    img_url = '' # Has to be defined outside of if statement because of locality
     if sent_input in CORPUS['input']:
         response = CORPUS['input'][sent_input]['content'] # Will error check for blank responses at sending time
         if CORPUS['input'][sent_input]['q_send_photo']: # This goes directly to a true/false
             img_url = (CORPUS['input'][sent_input]['photo_url'])
-        else: # Not everything will have a url, will error check for blank at sending
-            img_url = ''
         #commenting old code out below, so it's there for reference
         #if(re.match(r'.png',resp_str)): #if response will be an image
         #    print("inside regex logic")
@@ -68,7 +67,7 @@ def handle_request():
 
     logger.debug(response)
 
-    if img_url is not '':  # Image version
+    if img_url is not '':  # Image version, if img_url isn't blank
         message_img = g.sms_client.messages.create(
             body=response,
             from_=yml_configs['twillio']['phone_number'],
