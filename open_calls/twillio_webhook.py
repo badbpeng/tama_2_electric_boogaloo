@@ -67,7 +67,8 @@ def handle_request():
 
     logger.debug(response)
 
-    message = message = g.sms_client.messages.create(
+    message = g.sms_client.messages.create(
+            body='ERROR',
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From'])
 
@@ -77,5 +78,7 @@ def handle_request():
         message.body = response
     if img_url != '':  # Image version, if img_url isn't blank
         message.media_url = img_url
+        if response == '':
+            message.body = '' # Blanking the message if theres an image but no text
 
     return json_response( status = "ok" )
