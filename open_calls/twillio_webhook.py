@@ -71,7 +71,7 @@ def handle_request():
         message_img = g.sms_client.messages.create(
             body=response,
             from_=yml_configs['twillio']['phone_number'],
-            media_url=image_url,
+            media_url=img_url,
             to=request.form['From']
         )
     else:  # Sends no image
