@@ -50,7 +50,7 @@ def handle_request():
     img_url = '' # Has to be defined outside of if statement because of locality
     if sent_input in CORPUS['input']:
         response = CORPUS['input'][sent_input]['content']  # Will error check for blank responses at sending time
-        if 'photo_url' in CORPUS['input'][send_input]:  # Does url exist in json
+        if 'photo_url' in CORPUS['input'][sent_input]:  # Does url exist in json
             img_url = CORPUS['input'][sent_input]['photo_url']
             print(img_url)
         #commenting old code out below, so it's there for reference
