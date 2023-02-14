@@ -47,12 +47,12 @@ def handle_request():
     resp_str = CORPUS['input'][sent_input]
     print(resp_str)
 
-    img_url = '' # Has to be defined outside of if statement because of locality
+    img_file = '' # Has to be defined outside of if statement because of locality, I think
     if sent_input in CORPUS['input']:
         response = CORPUS['input'][sent_input]['content']  # Will error check for blank responses at sending time
-        if 'photo_url' in CORPUS['input'][sent_input]:  # Does url exist in json
-            img_url = CORPUS['input'][sent_input]['photo_url']
-            print(img_url)
+        if 'photo_file' in CORPUS['input'][sent_input]:  # Does url exist in json
+            img_file = CORPUS['input'][sent_input]['photo_file']
+            print(img_file)
         #commenting old code out below, so it's there for reference
         #if(re.match(r'.png',resp_str)): #if response will be an image
         #    print("inside regex logic")
@@ -68,9 +68,9 @@ def handle_request():
 
     logger.debug(response)
 
-    if img_url != '':  # Image sends first
+    if img_file != '':  # Image sends first
         message = g.sms_client.messages.create(
-            media_url=img_url,
+            media_url=img_file,
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From'])
     if response != '': # Text sends second
