@@ -71,6 +71,7 @@ def handle_request():
     if img_file is not '':  # sends the image first, if any
         message_img = g.sms_client.messages.create(
             content_type="image/png",
+            media=img_file,
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From']
         )
