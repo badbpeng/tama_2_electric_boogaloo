@@ -44,11 +44,13 @@ def handle_request():
     response = 'NOT FOUND'
 
     sent_input = str(request.form['Body']).lower()
+    resp_str = str(CORPUS['input'][sent_input])
+
     if sent_input in CORPUS['input']:
         
-        if(re.match(r'.png',CORPUS['input'][sent_input])): #if response will be an image
+        if(re.match(r'.png',resp_str)): #if response will be an image
             print("inside regex logic")
-            response.media(CORPUS['input'][sent_input]) #call png file from repo and send it as media
+            response.media(resp_str) #call png file from repo and send it as media
         else:
             response = random.choice(CORPUS['input'][sent_input]) #normal text response
     else:
