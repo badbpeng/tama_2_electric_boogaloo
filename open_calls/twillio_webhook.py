@@ -51,7 +51,7 @@ def handle_request():
     if sent_input in CORPUS['input']:
         response = CORPUS['input'][sent_input]['content']  # Will error check for blank responses at sending time
         if CORPUS['input'][sent_input]['q_send_photo']:  # This goes directly to a true/false
-            img_url = (CORPUS['input'][sent_input]['photo_url'])
+            img_url = CORPUS['input'][sent_input]['photo_url']
         #commenting old code out below, so it's there for reference
         #if(re.match(r'.png',resp_str)): #if response will be an image
         #    print("inside regex logic")
