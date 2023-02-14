@@ -70,7 +70,7 @@ class Pet:
     # returns a string based on the pet's degree of health/cleanliness
     def check_health(self):
         if (self.health == 10):
-            return self.name + " is fabulous!"
+            return self.name + " is fabulous."
         elif (self.health > 5):
             return self.name + " is clean."
         elif (self.health > 1):
