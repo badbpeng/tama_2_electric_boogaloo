@@ -1,0 +1,21 @@
+{
+  "input" : {
+    "hello" : {
+      "content" : "Hi, it's me",
+      "next_state" : "end",
+      "q_send_photo" : false
+    },
+    "send photo" : {
+      "content" : "",
+      "next_state" : "end",
+      "q_send_photo" : true,
+      "photo_file" : "Shimae-naga_joy.png"
+    },
+    "send cooler photo" : {
+      "content" : "It's a better borb",
+      "next_state" : "end",
+      "q_send_photo" : true,
+      "photo_file" : "baby_shimae-naga_sleep_fluffier.png"
+    }
+  }
+}

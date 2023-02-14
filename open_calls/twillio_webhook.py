@@ -48,25 +48,39 @@ def handle_request():
     print(resp_str)
 
     if sent_input in CORPUS['input']:
-        
-        if(re.match(r'.png',resp_str)): #if response will be an image
-            print("inside regex logic")
-            response.media(resp_str) #call png file from repo and send it as media
-        else:
-            response = random.choice(CORPUS['input'][sent_input]) #normal text response
+        response = CORPUS['input'][sent_input]['content'] # Will error check for blank responses at sending time
+        if CORPUS['input'][sent_input]['q_send_photo']: # This goes directly to a true/false
+            img_file = (CORPUS['input'][sent_input]['photo_file'])
+        else: # Not everything will have a file, will error check for blank at sending
+            img_file = ''
+        #commenting old code out below, so it's there for reference
+        #if(re.match(r'.png',resp_str)): #if response will be an image
+        #    print("inside regex logic")
+        #    response.media(resp_str) #call png file from repo and send it as media
+        #else:
+        #    response = random.choice(CORPUS['input'][sent_input]) #normal text response
     else:
         CORPUS['input'][sent_input] = ['DID NOT FIND']
-        with open('chatbot_corpus.json', 'w') as myfile:
-            myfile.write(json.dumps(CORPUS, indent=4 ))
+    #    with open('chatbot_corpus.json', 'w') as myfile: # Commented out for now
+    #        myfile.write(json.dumps(CORPUS, indent=4 ))
 
     #response.media("Shimae-naga_joy.png") #add picture
 
     logger.debug(response)
 
-    message = g.sms_client.messages.create(
-                     body=response,
-                     from_=yml_configs['twillio']['phone_number'],
-                     to=request.form['From'])
+    if img_file is not '':  # sends the image first, if any
+        message_img = g.sms_client.messages.create(
+            content_type="image/png",
+            from_=yml_configs['twillio']['phone_number'],
+            to=request.form['From']
+        )
+
+    if response is not '':  # Sends the text second, if any
+        message = g.sms_client.messages.create(
+            body=response,
+            from_=yml_configs['twillio']['phone_number'],
+            to=request.form['From'])
+
     return json_response( status = "ok" )
 
 
