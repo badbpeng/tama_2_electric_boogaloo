@@ -67,18 +67,20 @@ def handle_request():
 
     logger.debug(response)
 
-    message = g.sms_client.messages.create(
-            body='ERROR',
+    if img_url != '':  # Image sends first
+        message = g.sms_client.messages.create(
+            media_url=img_url
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From'])
-
-    # We're just gonna overwrite the message we just made if it's a proper message
-    if response != '':
+    if response != '': # Text sends second
         message = g.sms_client.messages.create(
             body=response,
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From'])
-    if img_url != '':  # Image version, if img_url isn't blank
-        message.media_url = img_url
+    if response == '' and img_url == '':
+        message = g.sms_client.messages.create(
+            body='ERROR',
+            from_=yml_configs['twillio']['phone_number'],
+            to=request.form['From'])
 
     return json_response( status = "ok" )
