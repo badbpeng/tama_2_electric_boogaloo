@@ -50,9 +50,9 @@ def handle_request():
     if sent_input in CORPUS['input']:
         response = CORPUS['input'][sent_input]['content'] # Will error check for blank responses at sending time
         if CORPUS['input'][sent_input]['q_send_photo']: # This goes directly to a true/false
-            img_file = (CORPUS['input'][sent_input]['photo_file'])
-        else: # Not everything will have a file, will error check for blank at sending
-            img_file = ''
+            img_url = (CORPUS['input'][sent_input]['photo_url'])
+        else: # Not everything will have a url, will error check for blank at sending
+            img_url = ''
         #commenting old code out below, so it's there for reference
         #if(re.match(r'.png',resp_str)): #if response will be an image
         #    print("inside regex logic")
@@ -68,15 +68,14 @@ def handle_request():
 
     logger.debug(response)
 
-    if img_file is not '':  # sends the image first, if any
+    if img_url is not '':  # Image version
         message_img = g.sms_client.messages.create(
-            content_type="image/png",
-            media=img_file,
+            body=response,
             from_=yml_configs['twillio']['phone_number'],
+            media_url=image_url,
             to=request.form['From']
         )
-
-    if response is not '':  # Sends the text second, if any
+    else:  # Sends no image
         message = g.sms_client.messages.create(
             body=response,
             from_=yml_configs['twillio']['phone_number'],

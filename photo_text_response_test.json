@@ -9,13 +9,13 @@
       "content" : "",
       "next_state" : "end",
       "q_send_photo" : true,
-      "photo_file" : "Shimae-naga_joy.png"
+      "photo_url" : "https://photos.app.goo.gl/oMpucckLVaKEzr6V6"
     },
     "send cooler photo" : {
       "content" : "It's a better borb",
       "next_state" : "end",
       "q_send_photo" : true,
-      "photo_file" : "baby_shimae-naga_sleep_fluffier.png"
+      "photo_url" : "https://photos.app.goo.gl/qbZbj1tt28GeUYRu7"
     }
   }
 }
