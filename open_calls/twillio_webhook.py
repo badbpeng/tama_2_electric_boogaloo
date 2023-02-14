@@ -72,13 +72,13 @@ def handle_request():
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From'])
 
-    # Apparently at least one of these has to be declared
-    # Will fix checking for two blanks later
-    if response != '': # Doesn't send a message if there's no body
-        message.body = response
+    # We're just gonna overwrite the message we just made if it's a proper message
+    if response != '':
+        message = g.sms_client.messages.create(
+            body=response,
+            from_=yml_configs['twillio']['phone_number'],
+            to=request.form['From'])
     if img_url != '':  # Image version, if img_url isn't blank
         message.media_url = img_url
-        if response == '':
-            message.body = '' # Blanking the message if theres an image but no text
 
     return json_response( status = "ok" )
