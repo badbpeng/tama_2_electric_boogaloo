@@ -44,7 +44,8 @@ def handle_request():
     response = 'NOT FOUND'
 
     sent_input = str(request.form['Body']).lower()
-    resp_str = str(CORPUS['input'][sent_input])
+    resp_str = CORPUS['input'][sent_input]
+    print(resp_str)
 
     if sent_input in CORPUS['input']:
         
