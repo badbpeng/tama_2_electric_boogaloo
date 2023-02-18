@@ -55,8 +55,8 @@ def handle_request():
 
     message = g.sms_client.messages.create(
                      body=response,
-                     MediaURL="https://demo.twilio.com/Shimar-naga_joy.png"
                      from_=yml_configs['twillio']['phone_number'],
+                     MediaURL="https://demo.twilio.com/Shimar-naga_joy.png"
                      to=request.form['From'])
     return json_response( status = "ok" )
 
