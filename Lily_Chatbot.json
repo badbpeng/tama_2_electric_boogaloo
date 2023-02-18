@@ -70,7 +70,7 @@
     },
 
     "end tutorial":{
-        "content":"That's all for the tutorial. Remember, don't neglect your pet or it may run away!",
+        "content":"That's all for the tutorial. Remember, don't neglect your pet since it may die or run away!",
         "media":"",
         "send_media":false,
         "next_state":"input"
@@ -88,14 +88,44 @@
         "clean": [
             "call clean method"
         ],
-        "shop": [
+        "shop": {
             "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend!",
             "media":"",
             "send_media":false,
             "next_state":"choose item"
 
-        ]
+        }
     },
 
-    "choose item":
+    "choose item":{
+        "content":"choose the item you would like to purchase:",
+        "media":"",
+        "send_media":false,
+        "next_state":[
+            {
+                "input":"gacha",
+                "next_state":"get gacha",
+                "cost":10
+            },
+            {
+                "input":"antibiotics",
+                "next_state":"get antibiotics",
+                "cost":5
+            },
+            {
+                "input":"pet hotel",
+                "next_state":"get hotel",
+                "cost":10
+            }
+        ]
+    }
+
+    "get gacha":{
+        "content":"Here is your gacha prize!",
+        "media":[
+            "random borb art",
+            "random borb art",
+            "random borb art"
+        ],
+    }
 }
