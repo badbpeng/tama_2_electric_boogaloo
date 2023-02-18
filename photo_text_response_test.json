@@ -1,23 +1,26 @@
 {
-  "input" : {
-    "hello" : {
-      "content" : "Hi, it's me",
-      "next_state" : "end",
-      "q_send_photo" : false
-    },
-    "send photo" : {
-      "content" : "",
-      "next_state" : "end",
-      "q_send_photo" : true,
-      "photo_url" : "https://photos.app.goo.gl/oMpucckLVaKEzr6V6",
-      "photo_file" : "baby_shimae-naga_sleep_fluffier.png"
-    },
-    "send cooler photo" : {
-      "content" : "It's a better borb",
-      "next_state" : "end",
-      "q_send_photo" : true,
-      "photo_url" : "https://photos.app.goo.gl/qbZbj1tt28GeUYRu7",
-      "photo_file" : "Shimae-naga_joy.png"
+
+    "input": {
+        "hello": [
+            "Cheep!",
+            "Chirp!",
+            "Tweet!"
+        ],
+        "birb party": [
+            "shimae-naga_joy.png"
+        ],
+        "baby birb go to sleep": [
+            "baby_shimae-naga_sleep_fluffier.png"
+        ],
+        "feed":[
+            "Your birb has been fed."
+        ],
+        "clean":[
+            "Poops have been cleaned!"
+        ],
+        "play":[
+            "Your birb is having fun!"
+        ]
+    
     }
-  }
-}
+ }
