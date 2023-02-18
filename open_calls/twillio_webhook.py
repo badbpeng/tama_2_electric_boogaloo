@@ -56,7 +56,7 @@ def handle_request():
     message = g.sms_client.messages.create(
                      body=response,
                      from_=yml_configs['twillio']['phone_number'],
-                     media_url=['https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fhello&psig=AOvVaw1W0FNbjLLJJCcGenT_aLwB&ust=1676832107706000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCMDii8Pcn_0CFQAAAAAdAAAAABAE'],
+                     media_url=['http://54.67.106.33/static/Shimae-naga_joy.png'],
                      to=request.form['From'])
     return json_response( status = "ok" )
 
