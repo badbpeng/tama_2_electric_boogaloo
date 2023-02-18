@@ -1,24 +1,101 @@
 {
+    "init":{
+        "content":"Welcome to Tamagotchi BORB Edition!",
+        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
+        "send_media":true,
+        "next_state":"egg"
+    },
+    
+    "egg":{
+        "content":"You have been gifted an egg, it looks like its going to hatch!",
+        "media":"http://54.67.106.33/static/Shimae-naga_egg.png",
+        "send_media": true,
+        "next_state":"hatch"
+    },
+
+    "hatch":{
+        "content":"The egg has hatched.",
+        "media":"http://54.67.106.33/static/Shimae-naga_hatched.png",
+        "send_media":true,
+        "next_state":"name"
+    },
+
+    "name":{
+        "content":"What would you like to name your BORB?",
+        "media":"",
+        "send_media":false,
+        "next-state":"tutorial"
+    },
+
+    "tutorial":{
+        "content":"let's learn how to care for [name].",
+        "media":"",
+        "send_media":false,
+        "next_state":"feeding"
+    },
+
+    "feeding":{
+        "content":"[name] will grow hungry with time, to feed it simply text feed or send a food emoji!",
+        "media":"",
+        "send_media":false,
+        "next_state":"cleaning"
+    },
+
+    "cleaning":{
+        "content":"[name] and its virtual home need a good cleaning.  Text clean or send a cleaning emoji to clean up after your pet!",
+        "media":"",
+        "send_media":false,
+        "next_state":"playing"
+    },
+
+    "playing":{
+        "content":"[name] will grow bored over time, make sure to keep it entertained!  Text play or send a playing emoji to start a game with your pet!",
+        "media":"",
+        "send_media":false,
+        "next_state":"BORB points"
+    },
+
+    "BORB points":{
+        "content":"As you interact with [name], you will earn point for caring for it. These points can be exchanged for things in the BORB shop.",
+        "media":"",
+        "send_media":false,
+        "next_state":"shopping"
+    },
+
+    "shopping":{
+        "content":"To open the BORB shop text shop or send a shopping emoji.",
+        "media":"",
+        "send_media":false,
+        "next_state":"end tutorial"
+    },
+
+    "end tutorial":{
+        "content":"That's all for the tutorial. Remember, don't neglect your pet or it may run away!",
+        "media":"",
+        "send_media":false,
+        "next_state":"input"
+    },
+
     "input": {
-        "hello": [
-            "piss off",
-            "party",
-            "slay"
+        "feed": [
+            "call feed method"
         ],
-        "Hi": [
-            "hello",
-            "hi there",
-            "hi"
+        "play": [
+            "call tic tac toe game method",
+            "call guess that birb game method",
+            "call what-am-i game method"
         ],
-        "hi": [
-            "Hello",
-            "Hi there",
-            "Hi"
+        "clean": [
+            "call clean method"
         ],
-        "Hello": [
-            "hello",
-            "hi there",
-            "hi"
+        "shop": [
+            "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend!",
+            "media":"",
+            "send_media":false,
+            "next_state":"choose item"
+
         ]
-    }
+    },
+
+    "choose item":
 }
