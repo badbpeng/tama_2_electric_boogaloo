@@ -37,26 +37,26 @@ def handle_request():
     logger.debug(act.prev_msgs)
     
 
-    #with open(f"users/{request.form['From']}.pkl", 'wb') as p:
-    #    pickle.dump(act,p)
+    with open(f"users/{request.form['From']}.pkl", 'wb') as p:
+        pickle.dump(act,p)
 
-    #response = 'NOT FOUND'
-    response = "send picture!!"
+    response = 'NOT FOUND'
+    #response = "send picture!!"
 
-    #sent_input = str(request.form['Body']).lower()
-    #if sent_input in CORPUS['input']:
-    #    response = random.choice(CORPUS['input'][sent_input])
-    #else:
-    #    CORPUS['input'][sent_input] = ['DID NOT FIND']
-    #    with open('chatbot_corpus.json', 'w') as myfile:
-     #       myfile.write(json.dumps(CORPUS, indent=4 ))
+    sent_input = str(request.form['Body']).lower()
+    if sent_input in CORPUS['input']:
+        response = random.choice(CORPUS['input'][sent_input])
+    else:
+        CORPUS['input'][sent_input] = ['DID NOT FIND']
+        with open('chatbot_corpus.json', 'w') as myfile:
+            myfile.write(json.dumps(CORPUS, indent=4 ))
 
     logger.debug(response)
 
     message = g.sms_client.messages.create(
                      body=response,
                      from_=yml_configs['twillio']['phone_number'],
-                     MediaURL="https://demo.twilio.com/Shimar-naga_joy.png"
+                     MediaURL="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fhello&psig=AOvVaw1W0FNbjLLJJCcGenT_aLwB&ust=1676832107706000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCMDii8Pcn_0CFQAAAAAdAAAAABAE"
                      to=request.form['From'])
     return json_response( status = "ok" )
 
