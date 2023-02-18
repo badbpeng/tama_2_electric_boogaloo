@@ -19,7 +19,7 @@ with open('config.yml', 'r') as yml_file:
 
 CORPUS = {}
 
-with open('chatbot_corpus.json', 'r') as myfile:
+with open('Lily_Chatbot.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
 
