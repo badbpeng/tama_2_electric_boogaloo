@@ -9,6 +9,16 @@
             "hello",
             "hi there",
             "hi"
+        ],
+        "hi": [
+            "Hello",
+            "Hi there",
+            "Hi"
+        ],
+        "Hello": [
+            "hello",
+            "hi there",
+            "hi"
         ]
     }
 }
