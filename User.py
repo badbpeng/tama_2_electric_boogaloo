@@ -168,9 +168,11 @@ class User:
 
     # returns string of pet's values
     def pet_status(self):
-        string = self.pet.check_happiness()
-        string += self.pet.check_health()
-        string += self.pet.check_hunger()
+        status = self.pet.check_happiness()
+        status += self.pet.check_health()
+        status += self.pet.check_hunger()
+
+        return status
 
     def pet_leave(self):
         #TODO message the user that they're pet has left/died
