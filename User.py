@@ -1,7 +1,7 @@
 import pickle
 import time
 import random
-from Pet import Pet
+from Pet_test import Pet
 
 class User:
     def __init__(self, phone_number):
@@ -27,13 +27,16 @@ class User:
             # decrease all of the pets values
             if self.pet.decrease_hunger() == False:
                 self.pet_leave()
-                break
+                # TODO exit out of the old pet's function that called this (return state to input)
+                exit(1)
             if self.pet.decrease_happiness() == False:
                 self.pet_leave()
-                break
+                # TODO exit out of the old pet's function that called this (return state to input)
+                exit(1)
             if self.pet.decrease_health() == False:
                 self.pet_leave()
-                break
+                # TODO exit out of the old pet's function that called this (return state to input)
+                exit(1)
             self.time += 3600 # advance an hour
 
         # update the time
@@ -45,13 +48,15 @@ class User:
     # plays with pet
     # returns false if pet cannot be played with
     def tic_tac_toe(self):
+        self.check_pet() # check pet's values against time
+
         if self.pet.check_happiness == 10:
             return False
         
         self.pet.increase_happiness()
 
         # TODO play the game
-        won = None # test
+        won = 0 # test value
         
         # award player with points
         self.give_points(won)
@@ -65,13 +70,15 @@ class User:
     # plays with pet
     # returns false if pet cannot be played with
     def guess_that_birb(self):
+        self.check_pet() # check pet's values against time
+
         if self.pet.check_happiness == 10:
             return False
         
         self.pet.increase_happiness()
         
         # TODO play the game
-        won = None # test
+        won = 0 # test value
         
         # award player with points
         self.give_points(won)
@@ -85,13 +92,15 @@ class User:
     # plays with pet
     # returns false if pet cannot be played with
     def what_am_i(self):
+        self.check_pet() # check pet's values against time
+
         if self.pet.check_happiness == 10:
             return False
         
         self.pet.increase_happiness()
         
         # TODO play the game
-        won = None # test
+        won = 0 # test value
         
         # award player with points
         self.give_points(won)
@@ -104,6 +113,8 @@ class User:
     
     # cannot feed pet is pet is full
     def feed_pet(self):
+        self.check_pet() # check pet's values against time
+
         if self.pet.check_hunger() == 10:
             return False
         
@@ -121,6 +132,8 @@ class User:
 
     # cannot clean if pet is fully clean
     def clean_pet(self):
+        self.check_pet() # check pet's values against time
+
         if self.pet.check_health() == 10:
             return False
         
@@ -139,6 +152,8 @@ class User:
     # spend points put pet in the hotel
     # returns false if user doesn't have enough points or pet is alread in the hotel
     def hotel_pet(self):
+        self.check_pet() # check pet's values against time
+
         if self.pet.check_hotel() == True or self.points < 10:
             return False
         
@@ -167,10 +182,16 @@ class User:
             pickle.dump(self, p)
 
     # returns string of pet's values
-    def pet_status(self):
+    def status_pet(self):
+        self.check_pet() # check pet's values against time
+
         status = self.pet.status_happiness() + "\n"
         status = status + self.pet.status_health() + "\n"
-        status = status + self.pet.status_hunger()
+        status = status + self.pet.status_hunger() + "\n"
+        status += "You have %d point" % self.points
+        if self.points != 1:
+            status += "s"
+        status += " to spend."
 
         return status
 
