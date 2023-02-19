@@ -66,11 +66,18 @@
         "content":"To open the BORB shop text shop or send a shopping emoji.",
         "media":"",
         "send_media":false,
+        "next_state":"status"
+    },
+
+    "status":{
+        "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away!",
+        "media":"",
+        "send_media":false,
         "next_state":"end tutorial"
     },
 
     "end tutorial":{
-        "content":"That's all for the tutorial. Remember, don't neglect your pet since it may die or run away!",
+        "content":"That's all for the tutorial.",
         "media":"",
         "send_media":false,
         "next_state":"input"
@@ -94,6 +101,9 @@
             "send_media":false,
             "next_state":"choose item"
 
+        },
+        "status":{
+            "content":"call status method"
         }
     },
 
@@ -118,14 +128,54 @@
                 "cost":10
             }
         ]
-    }
+    },
 
     "get gacha":{
         "content":"Here is your gacha prize!",
         "media":[
             "random borb art",
             "random borb art",
-            "random borb art"
+            "random borb art",
+            ".random pulls a random picture url from the selection in here"
         ],
+        "send_media":true,
+        "next_state":"input"
+    },
+
+    "get antibiotics":{
+        "content":"The antibiotics have cured your pet!",
+        "media":"",
+        "send_media":false,
+        "next_state":"input"
+    },
+    
+    "get hotel":{
+        "Content":"Your pet has been checked into BORB hotel.  No point penalties will be deducted for 24 hours.",
+        "media":"fill in",
+        "send_media":true,
+        "next_state":"get BORB"
+    },
+
+    "get BORB":{
+        "content":"Check your pet out early from the BORB hotel?",
+        "media":"",
+        "send_media":false,
+        "next_state":[
+            {
+                "input":"yes",
+                "next_state":"leave hotel"
+            },
+            {
+                "input":"no",
+                "next_state":"input"
+            }]
+    },
+
+    "leave hotel":{
+        "content":"Your pet has left the hotel early.",
+        "media":"",
+        "send_media":false,
+        "next_state":"input"
     }
+
 }
