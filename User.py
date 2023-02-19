@@ -1,5 +1,6 @@
 import pickle
 import time
+import random
 from Pet import Pet
 
 class User:
@@ -50,7 +51,10 @@ class User:
         self.pet.increase_happiness()
 
         # TODO play the game
-        # TODO display & return amount of points won
+        won = None # test
+        
+        # award player with points
+        self.give_points(won)
 
         # update the time
         self.time = time.time()
@@ -67,7 +71,10 @@ class User:
         self.pet.increase_happiness()
         
         # TODO play the game
-        # TODO display & return amount of points won
+        won = None # test
+        
+        # award player with points
+        self.give_points(won)
 
         # update the time
         self.time = time.time()
@@ -84,7 +91,10 @@ class User:
         self.pet.increase_happiness()
         
         # TODO play the game
-        # TODO display & return amount of points won
+        won = None # test
+        
+        # award player with points
+        self.give_points(won)
 
         # update the time
         self.time = time.time()
@@ -99,6 +109,10 @@ class User:
         
         self.pet.increase_hunger()
 
+        # 20% chance to get a point after feeding
+        if random.randint(1, 5) == 1:
+            self.give_points(1)
+
         # update the time
         self.time = time.time()
         # update the pickle
@@ -111,6 +125,10 @@ class User:
             return False
         
         self.pet.increase_health()
+
+        # 20% chance to get a point after cleaning
+        if random.randint(1, 5) == 1:
+            self.give_points(1)
 
         # update the time
         self.time = time.time()
@@ -159,9 +177,19 @@ class User:
 
         # give the user a new pet
         self.pet = self.give_pet() # garbage collector on old pet?
-        # user will keep points
+        # user will keep points from last pet
         # update the time
         self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
+
+    def give_points(self, points):
+        # TODO send message that user has gained point(s)
+
+        # add points
+        self.points += points
+
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
