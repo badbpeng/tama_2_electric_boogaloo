@@ -21,51 +21,147 @@ class User:
     # game logic will need to load this user's pickle before calling this function, key for every user's pickle is thier phone #
     # checks if the pet's values needs to be updated
     def check_pet(self):
-        # decreases the pet's values by 1 for every hour since last updated
-        if (time.time() - self.time > 3600):
+        # decreases the pet's values by 1 for every hour since last updated, if it is not in the hotel
+        while self.pet.check_hotel() == False and time.time() - self.time > 3600:
             # decrease all of the pets values
-            self.pet.decrease_hunger()
-            self.pet.decrease_health()
-            self.pet.decrease_happiness()
+            if self.pet.decrease_hunger() == False:
+                self.pet_leave()
+                break
+            if self.pet.decrease_happiness() == False:
+                self.pet_leave()
+                break
+            if self.pet.decrease_health() == False:
+                self.pet_leave()
+                break
             self.time += 3600 # advance an hour
 
-            #update the time
-            self.time = time.time()
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
 
-            # update the pet
-            with open(self.phone, 'wb') as p:
-                pickle.dump(self, p)
-
-    # takes string from user, name of the game user wants to play
-    # returns False for pet that cannot be played with, or incorrect game name entered
-    def play_with_pet(self, game_name):
-        games = {"tic tac toe", "guess that birb", "what am i"}
-        if game_name.lower() not in games or self.pet.check_happiness != 10:
+    # plays with pet
+    # returns false if pet cannot be played with
+    def tic_tac_toe(self):
+        if self.pet.check_happiness == 10:
             return False
         
         self.pet.increase_happiness()
 
-        if (game_name.lower() == "tic tac toe"):
-            self.points += self.tic_tac_toe()
-        elif (game_name.lower() == "guess that birb"):
-            self.points += self.guess_that_birb()
-        elif (game_name.lower() == "what am i"):
-            self.points += self.what_am_i()
+        # TODO play the game
+        # TODO display & return amount of points won
 
-    def tic_tac_toe(self):
-        # play the game
-
-        # display amount of points won
-        return
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
     
-    def guess_that_birb():
-        # play the game
+    # plays with pet
+    # returns false if pet cannot be played with
+    def guess_that_birb(self):
+        if self.pet.check_happiness == 10:
+            return False
+        
+        self.pet.increase_happiness()
+        
+        # TODO play the game
+        # TODO display & return amount of points won
 
-        # display amount of points won
-        return
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
     
-    def what_am_i():
-        # play the game
+    # plays with pet
+    # returns false if pet cannot be played with
+    def what_am_i(self):
+        if self.pet.check_happiness == 10:
+            return False
+        
+        self.pet.increase_happiness()
+        
+        # TODO play the game
+        # TODO display & return amount of points won
 
-        # display amount of points won
-        return
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
+    
+    # cannot feed pet is pet is full
+    def feed_pet(self):
+        if self.pet.check_hunger() == 10:
+            return False
+        
+        self.pet.increase_hunger()
+
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
+
+    # cannot clean if pet is fully clean
+    def clean_pet(self):
+        if self.pet.check_health() == 10:
+            return False
+        
+        self.pet.increase_health()
+
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
+
+    # spend points put pet in the hotel
+    # returns false if user doesn't have enough points or pet is alread in the hotel
+    def hotel_pet(self):
+        if self.pet.check_hotel() == True or self.points < 10:
+            return False
+        
+        self.pet.change_hotel()
+        # TODO send a message that the pet has entered the hotel
+
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
+    
+    # take pet out of the hotel
+    # returns false if the pet is not in the hotel
+    def check_out_pet(self):
+        if self.pet.check_hunger == False:
+            return False
+        
+        self.pet.change_hotel()
+        # TODO send a message that the pet has exited the hotel
+
+        # update the time [so the pet won't decrease hunger/health/etc.]
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
+
+    # returns string of pet's values
+    def pet_status(self):
+        string = self.pet.check_happiness()
+        string += self.pet.check_health()
+        string += self.pet.check_hunger()
+
+    def pet_leave(self):
+        #TODO message the user that they're pet has left/died
+
+        # give the user a new pet
+        self.pet = self.give_pet() # garbage collector on old pet?
+        # user will keep points
+        # update the time
+        self.time = time.time()
+        # update the pickle
+        with open(self.phone, 'wb') as p:
+            pickle.dump(self, p)
