@@ -168,9 +168,9 @@ class User:
 
     # returns string of pet's values
     def pet_status(self):
-        status = self.pet.check_happiness()
-        status += self.pet.check_health()
-        status += self.pet.check_hunger()
+        status = self.pet.status_happiness() + "\n"
+        status = status + self.pet.status_health() + "\n"
+        status = status + self.pet.status_hunger()
 
         return status
 
