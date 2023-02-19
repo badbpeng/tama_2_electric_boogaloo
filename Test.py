@@ -1,4 +1,4 @@
-from User_test import User
+from User import User
 import pickle
 import random
 import os.path
