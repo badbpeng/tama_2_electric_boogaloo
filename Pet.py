@@ -11,7 +11,7 @@ class Pet:
         # i.e. pet is hungry, curImage is the "feed me" image
 
     # game logic must prevent user from playing when happiness = 10
-    def play(self):
+    def increase_happiness(self):
         self.happiness += 1
 
     def decrease_happiness(self):
@@ -36,7 +36,7 @@ class Pet:
         return self.sound
 
     # game logic must prevent user from feeding when hungry = 10
-    def eat(self):
+    def increase_hunger(self):
         self.hunger += 1
 
     # decrease hunger doesn't sound right, could use a better method name
@@ -58,7 +58,7 @@ class Pet:
             return self.name + " is starving!"
 
     # game logic must prevent user from cleaning when health = 10
-    def clean(self):
+    def increase_health(self):
         self.health += 1
 
     def decrease_health(self):
