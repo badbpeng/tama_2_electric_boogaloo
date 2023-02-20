@@ -1,0 +1,26 @@
+{
+
+    "input": {
+        "hello": [
+            "Cheep!",
+            "Chirp!",
+            "Tweet!"
+        ],
+        "birb party": [
+            "shimae-naga_joy.png"
+        ],
+        "baby birb go to sleep": [
+            "baby_shimae-naga_sleep_fluffier.png"
+        ],
+        "feed":[
+            "Your birb has been fed."
+        ],
+        "clean":[
+            "Poops have been cleaned!"
+        ],
+        "play":[
+            "Your birb is having fun!"
+        ]
+    
+    }
+ }
