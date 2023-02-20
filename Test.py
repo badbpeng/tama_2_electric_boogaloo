@@ -16,9 +16,9 @@ if __name__ == '__main__':
         user = pickle.load(p)
 
     # uncomment to manually change pet's values for testing
-    #user.pet.hunger = 5
-    #user.pet.happiness = 5
-    #user.pet.health = 5
+    user.pet.hunger = 5
+    user.pet.happiness = 5
+    user.pet.health = 5
     #user.points = 5
     #user.time = user.time - 3600 * 4
 
