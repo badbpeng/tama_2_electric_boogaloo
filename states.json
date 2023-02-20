@@ -1,0 +1,48 @@
+{
+  "init" : {
+    "next-state" : {
+      "default" : "egg"
+    }
+  }
+  
+  "egg" : {
+    "next-state" : {
+      "default" : "hatch"
+    }
+  }
+
+  "hatch" : {
+    "next-state" : {
+      "default" : "name"
+    }
+  }
+
+  "name" : {
+    "next-state" : {
+      "default" : "idle"
+    }
+  }
+
+  "idle" : {
+    "next-state" : {
+      "default" : "idle",
+      "play with [NAME]" : "play",
+      "clean [NAME]" : "clean"
+    }
+    
+   "play" : {
+     "next-state" : {
+       "default" : "idle",
+       "player-move" : "cpu-play",
+       "end-game" : "idle"
+     }
+   }
+
+   "clean" : {
+    "next-state" : {
+      "default" : "idle"
+     }
+   }
+
+  }
+}
