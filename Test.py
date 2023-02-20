@@ -9,7 +9,7 @@ debug = True
 if __name__ == '__main__':
     print("Enter phone #")
     phone_number = input()
-    while not path.exists(phone_number):
+    if not path.exists(phone_number):
         user = User(phone_number)
 
     with open(phone_number, 'rb') as p:
