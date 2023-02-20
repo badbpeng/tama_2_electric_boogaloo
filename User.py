@@ -10,7 +10,6 @@ class User:
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
         self.phone = phone_number # save the user's phone number
         self.points = 0 # user starts with 0 points
-
         self.state = "init" # user starts in tutorial
 
         # dump the inital user class as a pickle in a file named after their phone 
