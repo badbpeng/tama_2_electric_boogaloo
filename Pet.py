@@ -14,6 +14,7 @@ class Pet:
     # game logic must prevent user from playing when happiness = 10
     def increase_happiness(self):
         self.happiness += 1
+        
 
     # decreases the pet's happiness
     # returns false if happiness = 0 (pet will leave)
