@@ -5,7 +5,7 @@
     }
     "Give Egg" : {
       "contents" : "You've received an egg!",
-      "img_file" : "http://54.67.106.33/static/Shimae-naga_joy.png"
+      "img_file" : "http://54.67.106.33/static/Shimae-naga_egg.png"
     }
     "Hatch" : {
       "contents" : "Your egg has hatched!",
