@@ -49,7 +49,7 @@ def handle_request():
     #response intialized to not found, will be overwritten if response is found in the dialogue json
     response = 'NOT FOUND'
 
-    #get the input sent by the user and try to match it to json, otherwise dump to json file with not found msg
+    #get the input sent by the user and try to match it to json input section, otherwise dump to json file with not found msg
     sent_input = str(request.form['Body']).lower()
     if sent_input in CORPUS['input']:
         response = random.choice(CORPUS['input'][sent_input])
