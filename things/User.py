@@ -1,7 +1,9 @@
 import pickle
 import time
 import random
+import json
 from things.Pet import Pet
+from things.actors import actor
 
 MY_GAME_LOGIC = {}
 with open('Lily_Chatbot.json', 'r') as myfile:
