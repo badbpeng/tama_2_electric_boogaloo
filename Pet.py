@@ -1,10 +1,8 @@
 class Pet:
-    def __init__(self, name, noise):
+    def __init__(self):
         self.hunger = 10 # pet starts full (/10)
         self.health = 10 # pet starts healthy (/10)
         self.happiness = 10 # pet starts happy (/10)
-        self.sound = noise # string, pet's default noise (i.e. chirp)
-        self.name = name # string, pet's name
         self.hotel = False # pet starts not in hotel
 
         # [idea] add data base of images for each pet
@@ -31,13 +29,13 @@ class Pet:
     # returns a string based on the pet's degree of happiness
     def status_happiness(self):
         if self.happiness == 10:
-            return self.name + " is very happy."
+            return "Your pet is very happy."
         elif self.happiness > 5:
-            return self.name + " is pleased."
+            return "Your pet is pleased."
         elif self.happiness > 1:
-            return self.name + " is unhappy."
+            return "Your pet is unhappy."
         else:
-            return self.name + " is very sad!"
+            return "Your pet is very sad!"
 
     # returns a string, the pet's noise
     def make_sound(self):
@@ -64,13 +62,13 @@ class Pet:
     # returns a string based on the pet's degree of hunger
     def status_hunger(self):
         if self.hunger == 10:
-            return self.name + " is full."
+            return "Your pet is full."
         elif self.hunger > 5:
-            return self.name + " is content."
+            return "Your pet is content."
         elif self.hunger > 1:
-            return self.name + " is hungry."
+            return "Your pet is hungry."
         else:
-            return self.name + " is starving!"
+            return "Your pet is starving!"
 
     # game logic must prevent user from cleaning when health = 10
     def increase_health(self):
@@ -91,13 +89,13 @@ class Pet:
     # returns a string based on the pet's degree of health/cleanliness
     def status_health(self):
         if self.health == 10:
-            return self.name + " is fabulous."
+            return "Your pet is fabulous."
         elif self.health > 5:
-            return self.name + " is clean."
+            return "Your pet is clean."
         elif self.health > 1:
-            return self.name + " is dirty."
+            return "Your pet is dirty."
         else:
-            return self.name + " is filthy!"
+            return "Your pet is filthy!"
     
     # returns whether or not the pet is in the hotel
     def check_hotel(self):
