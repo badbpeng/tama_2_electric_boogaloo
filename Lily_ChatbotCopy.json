@@ -2,109 +2,115 @@
     "init":{
         "content":"Welcome to Tamagotchi BORB Edition!",
         "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
+        "send_media":true,
         "next_state":"egg"
     },
     
     "egg":{
         "content":"You have been gifted an egg, it looks like its going to hatch!",
         "media":"http://54.67.106.33/static/Shimae-naga_egg.png",
+        "send_media": true,
         "next_state":"hatch"
     },
 
     "hatch":{
         "content":"The egg has hatched.",
         "media":"http://54.67.106.33/static/Shimae-naga_hatched.png",
-        "next_state":"tutorial"
+        "send_media":true,
+        "next_state":"name"
+    },
+
+    "name":{
+        "content":"What would you like to name your BORB?",
+        "media":"",
+        "send_media":false,
+        "next-state":"tutorial"
     },
 
     "tutorial":{
-        "content":"let's learn how to care for your pet.",
+        "content":"let's learn how to care for [name].",
+        "media":"",
+        "send_media":false,
         "next_state":"feeding"
     },
 
     "feeding":{
-        "content":"Your pet will grow hungry with time, to feed it simply text feed.",
+        "content":"[name] will grow hungry with time, to feed it simply text feed or send a food emoji!",
+        "media":"",
+        "send_media":false,
         "next_state":"cleaning"
     },
 
     "cleaning":{
-        "content":"Your pet and its virtual home need a good cleaning.  Text clean to clean up after your pet!",
+        "content":"[name] and its virtual home need a good cleaning.  Text clean or send a cleaning emoji to clean up after your pet!",
+        "media":"",
+        "send_media":false,
         "next_state":"playing"
     },
 
     "playing":{
-        "content":"Your pet will grow bored over time, make sure to keep it entertained!  Text play or send a playing emoji to start a game with your pet!",
+        "content":"[name] will grow bored over time, make sure to keep it entertained!  Text play or send a playing emoji to start a game with your pet!",
+        "media":"",
+        "send_media":false,
         "next_state":"BORB points"
     },
 
     "BORB points":{
-        "content":"As you interact with your pet, you will earn point for caring for it. These points can be exchanged for things in the BORB shop.",
+        "content":"As you interact with [name], you will earn point for caring for it. These points can be exchanged for things in the BORB shop.",
+        "media":"",
+        "send_media":false,
         "next_state":"shopping"
     },
 
     "shopping":{
-        "content":"To open the BORB shop text shop.",
+        "content":"To open the BORB shop text shop or send a shopping emoji.",
+        "media":"",
+        "send_media":false,
         "next_state":"status"
     },
 
     "status":{
         "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away!",
+        "media":"",
+        "send_media":false,
         "next_state":"end tutorial"
     },
 
     "end tutorial":{
         "content":"That's all for the tutorial.",
+        "media":"",
+        "send_media":false,
         "next_state":"input"
     },
 
     "idle": {
-        "next_state" : [
-            {
-                "input" : "feed",
-                "next_state":"idle",
-                "feed_pet": 1
-            },
-            
-            {
-                "input":"play",
-                "content":"Which game would you like to play?  Choose from 'tic-tac-toe', 'name that birb!', or 'what am I?'.",
-                "next_state": [
-                    {
-                        "input": ["tic-tac-toe", "tictactoe"],
-                        "next_state":"tic_tac_toe"
-                    },
-                    {
-                        "input": ["Name that birb", "name that birb!"],
-                        "next_state":"name that birb!"
-                    },
-                    {
-                        "input": ["what am i", "what am i?"],
-                        "next_state":"what am i?"
-                    }
-                ]
-            },
-            
-            {
-                    "input":"clean",
-                    "next_state":"idle",
-                    "clean_pet": 1
-            },
-            
-            {
-                "input":"shop",
-                "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend!",
-                "next_state":"choose item"
-            },
+        "feed": [
+            "call feed method"
+        ],
+        "play": [
+            "call tic tac toe game method",
+            "call guess that birb game method",
+            "call what-am-i game method"
+        ],
+        "clean": [
+            "call clean method"
+        ],
+        "shop": {
+            "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend!",
+            "media":"",
+            "send_media":false,
+            "next_state":"choose item"
 
-            {
-                "input":"status",
-                "next_state":"check-pet"
-            }
-        ]
+        },
+        "status":{
+            "content":"call status method"
+        }
     },
 
     "choose item":{
         "content":"choose the item you would like to purchase:",
+        "media":"",
+        "send_media":false,
         "next_state":[
             {
                 "input":"gacha",
@@ -132,21 +138,28 @@
             "random borb art",
             ".random pulls a random picture url from the selection in here"
         ],
+        "send_media":true,
         "next_state":"idle"
     },
 
     "get antibiotics":{
         "content":"The antibiotics have cured your pet!",
+        "media":"",
+        "send_media":false,
         "next_state":"idle"
     },
     
     "get hotel":{
         "Content":"Your pet has been checked into BORB hotel.  No point penalties will be deducted for 24 hours.",
+        "media":"fill in",
+        "send_media":true,
         "next_state":"get BORB"
     },
 
     "get BORB":{
         "content":"Check your pet out early from the BORB hotel?",
+        "media":"",
+        "send_media":false,
         "next_state":[
             {
                 "input":"yes",
@@ -160,6 +173,8 @@
 
     "leave hotel":{
         "content":"Your pet has left the hotel early.",
+        "media":"",
+        "send_media":false,
         "next_state":"idle"
     }
 
