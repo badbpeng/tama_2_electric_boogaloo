@@ -1,0 +1,56 @@
+{
+  "init" : {
+      "content" : "Hello",
+      "media" : "http://54.67.106.33/static/Shimae-naga_joy.png",
+      "next_state" : "egg"
+  },
+
+  "egg" : {
+      "content" : "EGG GET",
+      "media" : "http://54.67.106.33/static/Shimae-naga_egg.png",
+      "next_state" : "hatch"
+  },
+
+  "hatch" : {
+      "content" : "HATCH!!!!",
+      "media" : "http://54.67.106.33/static/Shimae-naga_hatched.png",
+      "next_state" : "idle"
+  },
+
+  "idle" : {
+    "content" : "Your pet is vibing",
+    "next_state" : [
+      {
+        "input" : "shop",
+        "next_state" : "shop"
+      },
+      {
+        "input" : "clean",
+        "next_state" : "bath"
+      }
+    ]
+  },
+
+  "shop" : {
+    "content" : "Welcome to SHOP. Please choose what to buy",
+    "next_state" : [
+      {
+        "input": "item1",
+        "next_state" : "bought_item1"
+      },
+      {
+        "input" : "item2",
+        "next_state" : "bought_item2"
+      },
+      {
+        "input" : "exit",
+        "next_state" : "idle"
+      }
+    ]
+  },
+
+  "bought_item1" : {
+    "content" : "You bought an item1",
+    "next_state" : "shop"
+  }
+}
