@@ -26,7 +26,7 @@ class User(actor):
     def get_output(self,msg_input):
         found_match = False
         output = [  ]
-        media = ""
+        media = []
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
                 if msg_input.lower() ==  next_state['input'].lower():
