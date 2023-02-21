@@ -20,7 +20,7 @@ with open('config.yml', 'r') as yml_file:
 
 CORPUS = {}
 
-with open('photo_text_response_test.json', 'r') as myfile:
+with open('Lily_Chatbot.json', 'r') as myfile:
     CORPUS = json.loads(myfile.read())
 
 
@@ -50,21 +50,15 @@ def handle_request():
     img_file = '' # Has to be defined outside of if statement because of locality, I think
     if sent_input in CORPUS['input']:
         response = CORPUS['input'][sent_input]['content']  # Will error check for blank responses at sending time
-        if 'photo_file' in CORPUS['input'][sent_input]:  # Does url exist in json
-            img_file = CORPUS['input'][sent_input]['photo_file']
+        if 'send_media' in CORPUS['input'][sent_input]:  # Does url exist in json
+            img_file = CORPUS['input'][sent_input]['media']
             print(img_file)
-        #commenting old code out below, so it's there for reference
-        #if(re.match(r'.png',resp_str)): #if response will be an image
-        #    print("inside regex logic")
-        #    response.media(resp_str) #call png file from repo and send it as media
-        #else:
-        #    response = random.choice(CORPUS['input'][sent_input]) #normal text response
     else:
         CORPUS['input'][sent_input] = ['DID NOT FIND']
     #    with open('chatbot_corpus.json', 'w') as myfile: # Commented out for now
     #        myfile.write(json.dumps(CORPUS, indent=4 ))
 
-    #response.media("Shimae-naga_joy.png") #add picture
+    
 
     logger.debug(response)
 
