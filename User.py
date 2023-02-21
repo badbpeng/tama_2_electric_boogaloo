@@ -6,19 +6,15 @@ from Pet import Pet
 class User:
     def __init__(self, phone_number):
         # TODO after bug fixing make vars private
-        self.pet = self.give_pet() # make the pet [TEST]
+        self.pet = Pet() # give the user a per
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
         self.phone = phone_number # save the user's phone number
         self.points = 0 # user starts with 0 points
         self.state = "init" # user starts in tutorial
 
-        # dump the inital user class as a pickle in a file named after their phone 
+        # dump the inital user class as a pickle in a file named after their phone
         with open(phone_number, 'wb') as p:
             pickle.dump(self, p)
-
-    # TODO: add rng, grab pet's name and noise from database
-    def give_pet(self):
-        return Pet("test_name", "test_sound")
 
     # game logic will need to load this user's pickle before calling this function, key for every user's pickle is thier phone #
     # checks if the pet's values needs to be updated
@@ -52,7 +48,7 @@ class User:
         self.check_pet() # check pet's values against time
 
         if self.pet.check_happiness == 10:
-            return False
+            return "Your pet does not want to play."
         
         self.pet.increase_happiness()
 
@@ -74,7 +70,7 @@ class User:
         self.check_pet() # check pet's values against time
 
         if self.pet.check_happiness == 10:
-            return False
+            return "Your pet does not want to play."
         
         self.pet.increase_happiness()
         
@@ -96,7 +92,7 @@ class User:
         self.check_pet() # check pet's values against time
 
         if self.pet.check_happiness == 10:
-            return False
+            return "Your pet does not want to play."
         
         self.pet.increase_happiness()
         
@@ -117,7 +113,7 @@ class User:
         self.check_pet() # check pet's values against time
 
         if self.pet.check_hunger() == 10:
-            return False
+            return "Your pet is not hungry."
         
         self.pet.increase_hunger()
 
@@ -136,7 +132,7 @@ class User:
         self.check_pet() # check pet's values against time
 
         if self.pet.check_health() == 10:
-            return False
+            return "Your pet is spotless!"
         
         self.pet.increase_health()
 
@@ -200,7 +196,7 @@ class User:
         #TODO message the user that they're pet has left/died
 
         # give the user a new pet
-        self.pet = self.give_pet() # garbage collector on old pet?
+        self.pet = Pet() # garbage collector on old pet?
         # user will keep points from last pet
         # update the time
         self.time = time.time()
