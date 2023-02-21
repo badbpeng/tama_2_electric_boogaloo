@@ -35,7 +35,8 @@ def handle_request():
     logger.debug(act.prev_msgs)
 
 
-    response = 'NOT FOUND', media = ''
+    response = 'NOT FOUND'
+    media = ''
     response, media = act.get_output(request.form['Body']) 
     logger.debug(response)
 
