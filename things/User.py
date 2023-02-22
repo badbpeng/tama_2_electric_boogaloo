@@ -14,7 +14,6 @@ class User(actor):
         # TODO after bug fixing make vars private
         self.pet = self.give_pet() # make the pet [TEST]
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
-        self.phone = phone_number # save the user's phone number
         self.points = 0 # user starts with 0 points
         super().__init__(phone_number)
         #self.state = "init" # user starts in tutorial
@@ -28,6 +27,7 @@ class User(actor):
         output = [  ]
         media = []
         print(self.state)
+        print(msg_input)
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
             print('running here too')
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
