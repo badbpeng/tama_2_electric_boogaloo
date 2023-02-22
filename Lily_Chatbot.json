@@ -54,7 +54,7 @@
 
     "end tutorial":{
         "content":"That's all for the tutorial.",
-        "next_state":"input"
+        "next_state":"idle"
     },
 
     "idle": {
