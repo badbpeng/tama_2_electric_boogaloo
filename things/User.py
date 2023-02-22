@@ -32,9 +32,9 @@ class User(actor):
                 if msg_input.lower() ==  next_state['input'].lower():
                     self.state = next_state['next_state']
                     if 'feed_pet' in  next_state:
-                        feed_pet()
+                        self.feed_pet()
                     if 'clean_pet' in next_state:
-                        clean_pet()
+                        self.clean_pet()
                     if 'media' in next_state:
                         media.append(MY_GAME_LOGIC[ self.state ]['media'])
                     found_match = True
