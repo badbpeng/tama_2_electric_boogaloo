@@ -7,13 +7,13 @@
     
     "egg":{
         "content":"You have been gifted an egg, it looks like its going to hatch!",
-        "media":"http://54.67.106.33/static/Shimae-naga_egg.png",
+        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
         "next_state":"hatch"
     },
 
     "hatch":{
         "content":"The egg has hatched.",
-        "media":"http://54.67.106.33/static/Shimae-naga_hatched.png",
+        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
         "next_state":"tutorial"
     },
 
