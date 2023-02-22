@@ -49,6 +49,7 @@ class User(actor):
                 return ['Ooops.. Not a valid choice...']
 
         while True:
+            print(self.state)
             output.append( MY_GAME_LOGIC[ self.state ]['content'])
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
