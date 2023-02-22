@@ -17,7 +17,7 @@ class User(actor):
         self.phone = phone_number # save the user's phone number
         self.points = 0 # user starts with 0 points
         super().__init__(phone_number)
-        self.state = "init" # user starts in tutorial
+        #self.state = "init" # user starts in tutorial
 
         # dump the inital user class as a pickle in a file named after their phone 
         with open(phone_number, 'wb') as p:
@@ -27,7 +27,9 @@ class User(actor):
         found_match = False
         output = [  ]
         media = []
+        print(self.state)
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
+            print('running here too')
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
                 if msg_input.lower() ==  next_state['input'].lower():
                     self.state = next_state['next_state']
