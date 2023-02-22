@@ -9,6 +9,9 @@ MY_GAME_LOGIC = {}
 with open('Lily_Chatbot.json', 'r') as myfile:
     MY_GAME_LOGIC = json.loads(myfile.read())
 
+print(json.dumps(MY_GAME_LOGIC, indent=4))
+print(MY_GAME_LOGIC.keys())
+
 class User(actor):
     def __init__(self, phone_number):
         # TODO after bug fixing make vars private
