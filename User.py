@@ -119,7 +119,7 @@ class User:
 
         # 20% chance to get a point after feeding
         if random.randint(1, 5) == 1:
-            self.give_points(1)
+            self.give_points(1) # send pic of pet & message
 
         # update the time
         self.time = time.time()
