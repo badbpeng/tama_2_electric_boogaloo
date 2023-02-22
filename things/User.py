@@ -27,7 +27,7 @@ class User(actor):
 
     def get_output(self,msg_input):
         found_match = False
-        output = [  ]
+        output = []
         media = []
         print(self.state)
         print(msg_input)
@@ -51,13 +51,15 @@ class User(actor):
         while True:
             print(self.state)
             if self.state != "idle":
-                output.append( MY_GAME_LOGIC[ self.state ]['content'])
+                output.append(MY_GAME_LOGIC[ self.state ]['content'])
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
             if 'next_state' not in MY_GAME_LOGIC[ self.state ] or type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str:
                 break
             self.state = MY_GAME_LOGIC[ self.state ]['next_state']
         
+        print("in get_output")
+        print(output)
         return output, media
 
     

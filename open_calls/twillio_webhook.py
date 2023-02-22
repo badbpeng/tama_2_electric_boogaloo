@@ -38,6 +38,8 @@ def handle_request():
     response = 'NOT FOUND'
     media = ''
     response, media = act.get_output(request.form['Body']) 
+    print("in twillio webhook")
+    print(response)
     logger.debug(response)
 
     if media != '':  # Image sends first
