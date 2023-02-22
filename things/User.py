@@ -50,7 +50,8 @@ class User(actor):
 
         while True:
             print(self.state)
-            output.append( MY_GAME_LOGIC[ self.state ]['content'])
+            if self.state != "idle":
+                output.append( MY_GAME_LOGIC[ self.state ]['content'])
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
             if 'next_state' not in MY_GAME_LOGIC[ self.state ] or type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str:
