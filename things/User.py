@@ -67,7 +67,7 @@ class User(actor):
     
     # TODO: add rng, grab pet's name and noise from database
     def give_pet(self):
-        return Pet("test_name", "test_sound")
+        return Pet()
 
     # game logic will need to load this user's pickle before calling this function, key for every user's pickle is thier phone #
     # checks if the pet's values needs to be updated
@@ -78,15 +78,15 @@ class User(actor):
             if self.pet.decrease_hunger() == False:
                 self.pet_leave()
                 # TODO exit out of the old pet's function that called this (return state to input)
-                exit(1)
+                return False
             if self.pet.decrease_happiness() == False:
                 self.pet_leave()
                 # TODO exit out of the old pet's function that called this (return state to input)
-                exit(1)
+                return False
             if self.pet.decrease_health() == False:
                 self.pet_leave()
                 # TODO exit out of the old pet's function that called this (return state to input)
-                exit(1)
+                return False
             self.time += 3600 # advance an hour
 
         # update the time
@@ -95,13 +95,16 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
+        return True
+
     # plays with pet
     # returns false if pet cannot be played with
     def tic_tac_toe(self):
-        self.check_pet() # check pet's values against time
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
 
         if self.pet.check_happiness == 10:
-            return False
+            return "Your pet is too tired to play."
         
         self.pet.increase_happiness()
 
@@ -116,14 +119,17 @@ class User(actor):
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
+
+        return ""
     
     # plays with pet
     # returns false if pet cannot be played with
     def guess_that_birb(self):
-        self.check_pet() # check pet's values against time
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
 
         if self.pet.check_happiness == 10:
-            return False
+            return "Your pet is too tired to play."
         
         self.pet.increase_happiness()
         
@@ -138,14 +144,17 @@ class User(actor):
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
+
+        return ""
     
     # plays with pet
     # returns false if pet cannot be played with
     def what_am_i(self):
-        self.check_pet() # check pet's values against time
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
 
         if self.pet.check_happiness == 10:
-            return False
+            return "Your pet is too tired to play"
         
         self.pet.increase_happiness()
         
@@ -160,13 +169,16 @@ class User(actor):
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
+
+        return ""
     
     # cannot feed pet is pet is full
     def feed_pet(self):
-        self.check_pet() # check pet's values against time
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
 
         if self.pet.check_hunger() == 10:
-            return False
+            return "Your pet is too full to eat."
         
         self.pet.increase_hunger()
 
@@ -180,12 +192,15 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
+        return ""
+
     # cannot clean if pet is fully clean
     def clean_pet(self):
-        self.check_pet() # check pet's values against time
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
 
         if self.pet.check_health() == 10:
-            return False
+            return "Your pet is already clean."
         
         self.pet.increase_health()
 
@@ -199,13 +214,16 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
+        return ""
+
     # spend points put pet in the hotel
     # returns false if user doesn't have enough points or pet is alread in the hotel
     def hotel_pet(self):
-        self.check_pet() # check pet's values against time
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
 
         if self.pet.check_hotel() == True or self.points < 10:
-            return False
+            return "Your pet cannot enter the hotel."
         
         self.pet.change_hotel()
         # TODO send a message that the pet has entered the hotel
@@ -215,12 +233,14 @@ class User(actor):
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
+
+        return ""
     
     # take pet out of the hotel
     # returns false if the pet is not in the hotel
     def check_out_pet(self):
-        if self.pet.check_hunger == False:
-            return False
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
         
         self.pet.change_hotel()
         # TODO send a message that the pet has exited the hotel
@@ -230,6 +250,8 @@ class User(actor):
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
+        
+        return ""
 
     # returns string of pet's values
     def status_pet(self):
