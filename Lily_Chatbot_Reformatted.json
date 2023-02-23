@@ -17,7 +17,7 @@
         "content":"Your pet and its virtual home need a good cleaning.  Text clean to clean up after your pet!  Enter ok to advance through the tutorial:",
         "next_state":[{
             "input" : "ok",
-            "next_state":"cleaning"
+            "next_state":"playing"
         }]
     },
 
@@ -25,7 +25,7 @@
         "content":"Your pet will grow bored over time, make sure to keep it entertained!  Text play to start a game with your pet!  Enter ok to advance through the tutorial:",
         "next_state":[{
             "input" : "ok",
-            "next_state":"cleaning"
+            "next_state":"BORB points"
         }]
     },
 
@@ -33,7 +33,7 @@
         "content":"As you interact with your pet, you will earn point for caring for it. These points can be exchanged for things in the BORB shop. To open the BORB shop text shop. Enter ok to advance through the tutorial:",
         "next_state":[{
             "input" : "ok",
-            "next_state":"cleaning"
+            "next_state":"status"
         }]
     },
 
@@ -41,7 +41,7 @@
         "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away! That's all for the tutorial.",
         "next_state":[{
             "input" : "ok",
-            "next_state":"cleaning"
+            "next_state":"idle"
         }]
     },
 
