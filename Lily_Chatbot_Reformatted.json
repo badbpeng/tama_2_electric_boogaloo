@@ -1,60 +1,48 @@
 {
     "init":{
-        "content":"Welcome to Tamagotchi BORB Edition!",
-        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
-        "next_state":"egg"
-    },
-    
-    "egg":{
-        "content":"You have been gifted an egg, it looks like its going to hatch!",
-        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
-        "next_state":"hatch"
-    },
-
-    "hatch":{
-        "content":"The egg has hatched.",
-        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
+        "content":"Welcome to Tamagotchi BORB Edition!  A shimaenaga has been gifted to you!",
+        "media":"https://stickershop.line-scdn.net/sticonshop/v1/sticon/62396adefe82522f084cbf64/iPhone/010.png?v=2",
         "next_state":"tutorial"
     },
 
     "tutorial":{
-        "content":"let's learn how to care for your pet.",
-        "next_state":"feeding"
-    },
-
-    "feeding":{
-        "content":"Your pet will grow hungry with time, to feed it simply text feed.",
-        "next_state":"cleaning"
+        "content":"let's learn how to care for your pet. Your pet will grow hungry with time, to feed it simply text feed.  Enter ok to advance through the tutorial:",
+        "next_state":{
+            "input" : "ok",
+            "next_state":"cleaning"
+        }
     },
 
     "cleaning":{
-        "content":"Your pet and its virtual home need a good cleaning.  Text clean to clean up after your pet!",
-        "next_state":"playing"
+        "content":"Your pet and its virtual home need a good cleaning.  Text clean to clean up after your pet!  Enter ok to advance through the tutorial:",
+        "next_state":{
+            "input" : "ok",
+            "next_state":"cleaning"
+        }
     },
 
     "playing":{
-        "content":"Your pet will grow bored over time, make sure to keep it entertained!  Text play or send a playing emoji to start a game with your pet!",
-        "next_state":"BORB points"
+        "content":"Your pet will grow bored over time, make sure to keep it entertained!  Text play to start a game with your pet!  Enter ok to advance through the tutorial:",
+        "next_state":{
+            "input" : "ok",
+            "next_state":"cleaning"
+        }
     },
 
     "BORB points":{
-        "content":"As you interact with your pet, you will earn point for caring for it. These points can be exchanged for things in the BORB shop.",
-        "next_state":"shopping"
-    },
-
-    "shopping":{
-        "content":"To open the BORB shop text shop.",
-        "next_state":"status"
+        "content":"As you interact with your pet, you will earn point for caring for it. These points can be exchanged for things in the BORB shop. To open the BORB shop text shop. Enter ok to advance through the tutorial:",
+        "next_state":{
+            "input" : "ok",
+            "next_state":"cleaning"
+        }
     },
 
     "status":{
-        "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away!",
-        "next_state":"end tutorial"
-    },
-
-    "end tutorial":{
-        "content":"That's all for the tutorial.",
-        "next_state":"idle"
+        "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away! That's all for the tutorial.",
+        "next_state":{
+            "input" : "ok",
+            "next_state":"cleaning"
+        }
     },
 
     "idle": {
@@ -107,13 +95,8 @@
 	},
 	
 	"points amount":{
-	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend!",
-		"next_state":"choose item"
-	},
-
-    "choose item":{
-        "content":"choose the item you would like to purchase:",
-        "next_state":[
+	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game or put your pet in the hotel?  Enter gacha or hotel:",
+		"next_state":[
             {
                 "input":"gacha",
                 "next_state":"get gacha",
@@ -130,7 +113,7 @@
                 "cost":-10
             }
         ]
-    },
+	},
 
     "get gacha":{
         "content":"Here is your gacha prize!",
