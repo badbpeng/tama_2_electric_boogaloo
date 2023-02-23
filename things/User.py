@@ -98,71 +98,18 @@ class User(actor):
         return True
 
     # plays with pet
-    # returns false if pet cannot be played with
-    def tic_tac_toe(self):
+    def play_pet(self):
         if not self.check_pet(): # check pet's values against time
             return "Your pet has died, you have been given a new pet."
-
-        if self.pet.check_happiness == 10:
-            return "Your pet is too tired to play."
         
-        self.pet.increase_happiness()
-
-        # TODO play the game
-        won = 0 # test value
-        
-        # award player with points
-        self.give_points(won)
-
-        # update the time
-        self.time = time.time()
-        # update the pickle
-        with open(self.phone, 'wb') as p:
-            pickle.dump(self, p)
-
-        return ""
-    
-    # plays with pet
-    # returns false if pet cannot be played with
-    def guess_that_birb(self):
-        if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
-
-        if self.pet.check_happiness == 10:
-            return "Your pet is too tired to play."
-        
-        self.pet.increase_happiness()
-        
-        # TODO play the game
-        won = 0 # test value
-        
-        # award player with points
-        self.give_points(won)
-
-        # update the time
-        self.time = time.time()
-        # update the pickle
-        with open(self.phone, 'wb') as p:
-            pickle.dump(self, p)
-
-        return ""
-    
-    # plays with pet
-    # returns false if pet cannot be played with
-    def what_am_i(self):
-        if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
-
-        if self.pet.check_happiness == 10:
+        if self.pet.check_happiness() == 10:
             return "Your pet is too tired to play"
         
         self.pet.increase_happiness()
-        
-        # TODO play the game
-        won = 0 # test value
-        
-        # award player with points
-        self.give_points(won)
+
+        # 20% chance to get a point after feeding
+        if random.randint(1, 5) == 1:
+            self.give_points(1)
 
         # update the time
         self.time = time.time()
