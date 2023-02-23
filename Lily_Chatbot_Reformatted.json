@@ -75,7 +75,7 @@
     },
 	
 	"play_menu":{
-		"content":"Which game would you like to play?  Choose from 'tic-tac-toe', 'name that birb!', or 'what am I?'.",
+		"content":"Which game would you like to play?  Choose from 'guess the number', 'name that birb!', or 'what am I?'.",
         "next_state": [
 				{
 					"input": ["guess the number", "guess the number"],
