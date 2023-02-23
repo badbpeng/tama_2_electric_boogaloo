@@ -35,14 +35,14 @@ def handle_request():
     logger.debug(act.prev_msgs)
 
 
-    response = 'NOT FOUND'
-    media = ''
+    response = ['NOT FOUND']
+    #media = []
     response, media = act.get_output(request.form['Body']) 
     print("in twillio webhook")
     print(response)
     logger.debug(response)
 
-    if media != '':  # Image sends first
+    if len(media) != 0:  # Image sends first
         message = g.sms_client.messages.create(
             media_url=media,
             from_=yml_configs['twillio']['phone_number'],
