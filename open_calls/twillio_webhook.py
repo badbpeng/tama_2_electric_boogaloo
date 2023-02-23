@@ -44,13 +44,14 @@ def handle_request():
 
     if media != '':  # Image sends first
         message = g.sms_client.messages.create(
-            body=response,
             media_url=media,
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From'])
-    else: # response != '': # Text sends second
+
+    for resp in response:
+        # response != '': # Text sends second
         message = g.sms_client.messages.create(
-            body=response,
+            body=resp,
             from_=yml_configs['twillio']['phone_number'],
             to=request.form['From'])
     # if response == '' and img_url == '':
