@@ -1,0 +1,174 @@
+{
+    "init":{
+        "content":"Welcome to Tamagotchi BORB Edition!",
+        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
+        "next_state":"egg"
+    },
+    
+    "egg":{
+        "content":"You have been gifted an egg, it looks like its going to hatch!",
+        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
+        "next_state":"hatch"
+    },
+
+    "hatch":{
+        "content":"The egg has hatched.",
+        "media":"http://54.67.106.33/static/Shimae-naga_joy.png",
+        "next_state":"tutorial"
+    },
+
+    "tutorial":{
+        "content":"let's learn how to care for your pet.",
+        "next_state":"feeding"
+    },
+
+    "feeding":{
+        "content":"Your pet will grow hungry with time, to feed it simply text feed.",
+        "next_state":"cleaning"
+    },
+
+    "cleaning":{
+        "content":"Your pet and its virtual home need a good cleaning.  Text clean to clean up after your pet!",
+        "next_state":"playing"
+    },
+
+    "playing":{
+        "content":"Your pet will grow bored over time, make sure to keep it entertained!  Text play or send a playing emoji to start a game with your pet!",
+        "next_state":"BORB points"
+    },
+
+    "BORB points":{
+        "content":"As you interact with your pet, you will earn point for caring for it. These points can be exchanged for things in the BORB shop.",
+        "next_state":"shopping"
+    },
+
+    "shopping":{
+        "content":"To open the BORB shop text shop.",
+        "next_state":"status"
+    },
+
+    "status":{
+        "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away!",
+        "next_state":"end tutorial"
+    },
+
+    "end tutorial":{
+        "content":"That's all for the tutorial.",
+        "next_state":"idle"
+    },
+
+    "idle": {
+        "next_state" : [
+            {
+                "input" : "feed",
+                "next_state":"idle",
+                "feed_pet": 1
+            },
+            
+            {
+                "input":"play",
+                "next_state":"play_menu"
+            },
+            
+            {
+                "input":"clean",
+                "next_state":"idle",
+                "clean_pet": 1
+            },
+            
+            {
+                "input":"shop",
+                "next_state":"points amount"
+            },
+
+            {
+                "input":"status",
+                "next_state":"check-pet"
+            }
+        ]
+    },
+	
+	"play_menu":{
+		"content":"Which game would you like to play?  Choose from 'tic-tac-toe', 'name that birb!', or 'what am I?'.",
+        "next_state": [
+				{
+					"input": ["tic-tac-toe", "tictactoe"],
+					"next_state":"tic_tac_toe"
+				},
+				{
+					"input": ["Name that birb", "name that birb!"],
+					"next_state":"name that birb!"
+				},
+				{
+                    "input": ["what am i", "what am i?"],
+                    "next_state":"what am i?"
+				}
+            ]
+	},
+	
+	"points amount":{
+	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend!",
+		"next_state":"choose item"
+	},
+
+    "choose item":{
+        "content":"choose the item you would like to purchase:",
+        "next_state":[
+            {
+                "input":"gacha",
+                "next_state":"get gacha",
+                "cost":-10
+            },
+            {
+                "input":"antibiotics",
+                "next_state":"get antibiotics",
+                "cost":-5
+            },
+            {
+                "input":"pet hotel",
+                "next_state":"get hotel",
+                "cost":-10
+            }
+        ]
+    },
+
+    "get gacha":{
+        "content":"Here is your gacha prize!",
+        "media":[
+            "random borb art",
+            "random borb art",
+            "random borb art",
+            ".random pulls a random picture url from the selection in here"
+        ],
+        "next_state":"idle"
+    },
+
+    "get antibiotics":{
+        "content":"The antibiotics have cured your pet!",
+        "next_state":"idle"
+    },
+    
+    "get hotel":{
+        "Content":"Your pet has been checked into BORB hotel.  No point penalties will be deducted for 24 hours.",
+        "next_state":"get BORB"
+    },
+
+    "get BORB":{
+        "content":"Check your pet out early from the BORB hotel?",
+        "next_state":[
+            {
+                "input":"yes",
+                "next_state":"leave hotel"
+            },
+            {
+                "input":"no",
+                "next_state":"idle"
+            }]
+    },
+
+    "leave hotel":{
+        "content":"Your pet has left the hotel early.",
+        "next_state":"idle"
+    }
+
+}
