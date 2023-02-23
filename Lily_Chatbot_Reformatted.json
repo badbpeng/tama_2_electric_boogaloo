@@ -39,10 +39,7 @@
 
     "status":{
         "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away! That's all for the tutorial.",
-        "next_state":[{
-            "input" : "ok",
-            "next_state":"idle"
-        }]
+        "next_state":"idle"
     },
 
     "idle": {
