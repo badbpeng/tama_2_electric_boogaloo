@@ -96,22 +96,21 @@
         "content":"Guess a number between 1 and 3:",
         "next_state" : [
             {
-                "guess" : true,
-                "next_state":"win",
-                "content": "You guessed right!",
-                "increase_happiness": 1
-            },
-            
-            {
-                "guess":false,
-                "next_state":"lose",
-                "content": "Your guess was wrong!",
+                "input" : "1",
+                "next_state":"idle",
+                "content": ["You guessed right!", "Your guess was wrong!","Your guess was wrong!"],
                 "increase_happiness": 1
             },
             {
+                "input" : "2",
+                "next_state":"idle",
+                "content": ["You guessed right!", "Your guess was wrong!","Your guess was wrong!"],
+                "increase_happiness": 1
+            },
+            {
+                "input" : "3",
                 "guess":false,
-                "next_state":"lose",
-                "content": "Your guess was wrong!",
+                "content": ["You guessed right!", "Your guess was wrong!","Your guess was wrong!"],
                 "increase_happiness": 1
             }
         ]

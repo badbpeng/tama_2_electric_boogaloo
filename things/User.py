@@ -44,6 +44,8 @@ class User(actor):
                         media.append(MY_GAME_LOGIC[ self.state ]['media'])
                     if 'status_pet' in next_state:
                         output.append(self.status_pet())
+                    if 'increase_happiness' in next_state:
+                        output.append(self.pet.increase_happiness())
                     found_match = True
                     break
 
