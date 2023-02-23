@@ -71,7 +71,8 @@
 
             {
                 "input":"status",
-                "next_state":"idle"
+                "next_state":"idle",
+                "status_pet": 1
             }
         ]
     },
