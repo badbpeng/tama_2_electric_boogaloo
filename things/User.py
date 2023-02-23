@@ -5,12 +5,12 @@ import json
 from things.Pet import Pet
 from things.actors import actor
 
-#MY_GAME_LOGIC = {}
-#with open('Lily_Chatbot_Reformatted.json', 'r') as myfile:
-#    MY_GAME_LOGIC = json.loads(myfile.read())
+MY_GAME_LOGIC = {}
+with open('Lily_Chatbot_Reformatted.json', 'r') as myfile:
+    MY_GAME_LOGIC = json.loads(myfile.read())
 
-print(json.dumps(MY_GAME_LOGIC, indent=4))
-print(MY_GAME_LOGIC.keys())
+#print(json.dumps(MY_GAME_LOGIC, indent=4))
+#print(MY_GAME_LOGIC.keys())
 
 class User(actor):
     def __init__(self, phone_number):
