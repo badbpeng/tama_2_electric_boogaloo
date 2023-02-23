@@ -1,7 +1,7 @@
 import json
 
 MY_GAME_LOGIC = {}
-with open('Lily_Chatbot.json', 'r') as myfile:
+with open('Lily_Chatbot_Reformatted.json', 'r') as myfile:
     MY_GAME_LOGIC = json.loads(myfile.read())
 
 
