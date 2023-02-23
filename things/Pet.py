@@ -1,10 +1,9 @@
 class Pet:
-    def __init__(self, name, noise):
+    def __init__(self):
         self.hunger = 10 # pet starts full (/10)
         self.health = 10 # pet starts healthy (/10)
         self.happiness = 10 # pet starts happy (/10)
-        self.sound = noise # string, pet's default noise (i.e. chirp)
-        self.name = name # string, pet's name
+        self.name = "Your pet" # string, pet's name
         self.hotel = False # pet starts not in hotel
 
         # [idea] add data base of images for each pet
