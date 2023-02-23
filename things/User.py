@@ -34,7 +34,7 @@ class User(actor):
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
             print('running here too')
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
-                if msg_input.lower() ==  next_state['input'].lower():
+                if msg_input.lower() == next_state['input'].lower():
                     self.state = next_state['next_state']
                     if 'feed_pet' in  next_state:
                         self.feed_pet()

@@ -7,42 +7,42 @@
 
     "tutorial":{
         "content":"let's learn how to care for your pet. Your pet will grow hungry with time, to feed it simply text feed.  Enter ok to advance through the tutorial:",
-        "next_state":{
+        "next_state":[{
             "input" : "ok",
             "next_state":"cleaning"
-        }
+        }]
     },
 
     "cleaning":{
         "content":"Your pet and its virtual home need a good cleaning.  Text clean to clean up after your pet!  Enter ok to advance through the tutorial:",
-        "next_state":{
+        "next_state":[{
             "input" : "ok",
             "next_state":"cleaning"
-        }
+        }]
     },
 
     "playing":{
         "content":"Your pet will grow bored over time, make sure to keep it entertained!  Text play to start a game with your pet!  Enter ok to advance through the tutorial:",
-        "next_state":{
+        "next_state":[{
             "input" : "ok",
             "next_state":"cleaning"
-        }
+        }]
     },
 
     "BORB points":{
         "content":"As you interact with your pet, you will earn point for caring for it. These points can be exchanged for things in the BORB shop. To open the BORB shop text shop. Enter ok to advance through the tutorial:",
-        "next_state":{
+        "next_state":[{
             "input" : "ok",
             "next_state":"cleaning"
-        }
+        }]
     },
 
     "status":{
         "content":"To check your pet's status, text status.  Keep those points from getting too low otherwise your pet may die or run away! That's all for the tutorial.",
-        "next_state":{
+        "next_state":[{
             "input" : "ok",
             "next_state":"cleaning"
-        }
+        }]
     },
 
     "idle": {
