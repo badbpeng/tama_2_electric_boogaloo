@@ -78,8 +78,8 @@
 		"content":"Which game would you like to play?  Choose from 'tic-tac-toe', 'name that birb!', or 'what am I?'.",
         "next_state": [
 				{
-					"input": ["tic-tac-toe", "tictactoe"],
-					"next_state":"tic_tac_toe"
+					"input": ["guess the number", "guess the number"],
+					"next_state":"guess the number"
 				},
 				{
 					"input": ["Name that birb", "name that birb!"],
@@ -91,6 +91,32 @@
 				}
             ]
 	},
+
+    "guess the number":{
+        "content":"Guess a number between 1 and 3:",
+        "next_state" : [
+            {
+                "guess" : true,
+                "next_state":"win",
+                "content": "You guessed right!",
+                "increase_happiness": 1
+            },
+            
+            {
+                "guess":false,
+                "next_state":"lose",
+                "content": "Your guess was wrong!",
+                "increase_happiness": 1
+            },
+            {
+                "guess":false,
+                "next_state":"lose",
+                "content": "Your guess was wrong!",
+                "increase_happiness": 1
+            }
+        ]
+
+    },
 	
 	"points amount":{
 	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game or put your pet in the hotel?  Enter gacha or hotel:",
