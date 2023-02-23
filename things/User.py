@@ -45,7 +45,11 @@ class User(actor):
                     if 'status_pet' in next_state:
                         output.append(self.status_pet())
                     if 'increase_happiness' in next_state:
-                        output.append(self.pet.increase_happiness())
+                        str = self.play_pet()
+                        if(str == ''):
+                            output.append(random.choice(MY_GAME_LOGIC[self.state]['content'])) #grab random line from json
+                        else:
+                            output.append(str) #else append the error message from the method
                     found_match = True
                     break
 
