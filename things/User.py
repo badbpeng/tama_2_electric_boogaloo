@@ -50,6 +50,10 @@ class User(actor):
                             output.append(random.choice(MY_GAME_LOGIC[self.state]['content'])) #grab random line from json
                         else:
                             output.append(s) #else append the error message from the method
+                    if 'cost' in next_state:
+                        # TODO get that cost change working
+                    if 'get gacha' in next_state: #Gets a random gacha image and throws it into the media list
+                        media.append(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
                     found_match = True
                     break
 
