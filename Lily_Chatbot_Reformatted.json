@@ -123,17 +123,17 @@
             {
                 "input":"gacha",
                 "next_state":"get gacha",
-                "cost":-10
+                "cost":-3
             },
             {
                 "input":"antibiotics",
                 "next_state":"get antibiotics",
-                "cost":-5
+                "cost":-2
             },
             {
                 "input":"pet hotel",
                 "next_state":"get hotel",
-                "cost":-10
+                "cost":-2
             }
         ]
 	},
@@ -192,7 +192,7 @@
     
     "get hotel":{
         "Content":"Your pet has been checked into BORB hotel.  No point penalties will be deducted for 24 hours.",
-        "next_state":"get BORB"
+        "next_state":"idle"
     },
 
     "get BORB":{

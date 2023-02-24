@@ -51,6 +51,24 @@ class User(actor):
                         else:
                             output.append(s) #else append the error message from the method
                     if 'cost' in next_state:
+                        #check for bought item
+                        if msg_input == "gacha":
+                            #points modifier
+                            if self.points >= 3:
+                                self.points -= 3
+                            else:
+                                output.append("You do not have enough points to spend on the gacha game.")
+                                self.state = "idle" #skip straight back to idle
+                        
+                        if msg_input == "pet hotel":
+                            if self.pet.check_hotel() == True: #don't buy another stay at the hotel, ask to check out borb early instead
+                                self.state = "get BORB" #skip straight to get borb
+                            else: #pet isn't already in hotel, allow user to buy stay if enough funds
+                                if self.points >= 2:
+                                    self.points -= 2
+                                else:
+                                    output.append("You do not have enough points to spend on the BORB hotel.")
+                                    self.state = "idle" #skip straight back to idle
                         # TODO get that cost change working
                     if 'get gacha' in next_state: #Gets a random gacha image and throws it into the media list
                         media.append(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
