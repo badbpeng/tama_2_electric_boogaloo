@@ -49,11 +49,11 @@ def handle_request():
             to=request.form['From'])
 
     for resp in response:
-        # response != '': # Text sends second
-        message = g.sms_client.messages.create(
-            body=resp,
-            from_=yml_configs['twillio']['phone_number'],
-            to=request.form['From'])
+        if resp != '': # Text sends second
+            message = g.sms_client.messages.create(
+                body=resp,
+                from_=yml_configs['twillio']['phone_number'],
+                to=request.form['From'])
     # if response == '' and img_url == '':
     #     message = g.sms_client.messages.create(
     #         body='ERROR',
