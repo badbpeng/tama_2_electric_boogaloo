@@ -29,13 +29,15 @@ class User(actor):
         found_match = False
         output = []
         media = []
-        print(self.state)
+        
+        #print(self.state)
         print(msg_input)
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
             print('running here too')
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
                 if msg_input.lower() == next_state['input'].lower():
                     self.state = next_state['next_state']
+                    print(self.state)
                     if 'feed_pet' in  next_state:
                         output.append(self.feed_pet())
                     if 'clean_pet' in next_state:
@@ -104,7 +106,7 @@ class User(actor):
                 break
             self.state = MY_GAME_LOGIC[ self.state ]['next_state']
         
-        print("in get_output")
+        #print("in get_output")
         print(output)
         return output, media
 
