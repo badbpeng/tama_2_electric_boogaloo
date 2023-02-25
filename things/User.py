@@ -79,6 +79,7 @@ class User(actor):
                     if 'get gacha' in next_state: #Gets a random gacha image and throws it into the media list
                         media.append(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
                         print(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
+                        print("get gacha triggered")
                     found_match = True
                     break
 
