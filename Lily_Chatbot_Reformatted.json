@@ -65,7 +65,7 @@
             {
                 "input":"shop",
                 "next_state":"points amount",
-                "price" : 
+                "price" : 0 
             },
 
             {
