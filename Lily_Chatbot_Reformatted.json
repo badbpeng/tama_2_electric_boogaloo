@@ -52,7 +52,7 @@
             
             {
                 "input":"play",
-                "next_state":"play_menu",
+                "next_state":"guess the number",
                 "play_pet": 1
             },
             

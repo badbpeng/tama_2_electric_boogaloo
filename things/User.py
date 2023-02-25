@@ -78,6 +78,7 @@ class User(actor):
                         # TODO get that cost change working
                     if 'get gacha' in next_state: #Gets a random gacha image and throws it into the media list
                         media.append(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
+                        print(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
                     found_match = True
                     break
 
@@ -91,6 +92,7 @@ class User(actor):
                     output.append(MY_GAME_LOGIC[ self.state ]['content'])
                 if self.state is "points amount":
                     output[-1] = output[-1].replace("[points]", self.points)
+                    print("triggered")
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
             if 'next_state' not in MY_GAME_LOGIC[ self.state ] or type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str:
@@ -143,10 +145,13 @@ class User(actor):
             return "Your pet doesn't want to play"
         
         self.pet.increase_happiness()
+        #msg = ""
 
         # 20% chance to get a point after feeding
         if random.randint(1, 5) == 1:
             self.give_points(1)
+        #    msg = "You have earned a BORB point for taking care of your shimaenaga!"
+
 
         # update the time
         self.time = time.time()
@@ -155,6 +160,7 @@ class User(actor):
             pickle.dump(self, p)
 
         return ""
+        #return msg
     
     # cannot feed pet is pet is full
     def feed_pet(self):
