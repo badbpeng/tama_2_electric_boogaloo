@@ -94,7 +94,7 @@ class User(actor):
                 if type(MY_GAME_LOGIC[ self.state ]['content']) is str:
                     output.append(MY_GAME_LOGIC[ self.state ]['content'])
                 if self.state == "points amount":
-                    output[-1] = output[-1].replace("[points]", self.points)
+                    output[-1] = output[-1].replace("[points]", str(self.points))
                     print("triggered")
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
