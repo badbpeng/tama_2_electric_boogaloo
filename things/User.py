@@ -49,7 +49,7 @@ class User(actor):
                     if 'increase_happiness' in next_state:
                         s = self.play_pet()
                         if(s == ''):
-                            output.append(random.choice(MY_GAME_LOGIC[self.state]['content'])) #grab random line from json
+                            output.append(random.choice(MY_GAME_LOGIC['next_state']['content'])) #grab random line from json
                         else:
                             output.append(s) #else append the error message from the method
                     if 'cost' in next_state:
@@ -83,9 +83,7 @@ class User(actor):
         while True:
             print(self.state)
             if self.state != "idle":
-                if type(MY_GAME_LOGIC[ self.state ]['content']) != str:
-                    output.append(random.choice(MY_GAME_LOGIC[ self.state]['content']))
-                else:
+                if type(MY_GAME_LOGIC[ self.state ]['content']) is str:
                     output.append(MY_GAME_LOGIC[ self.state ]['content'])
                 if self.state is "points amount":
                     output[-1] = output[-1].replace("[points]", self.points)
