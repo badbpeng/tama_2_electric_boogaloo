@@ -176,7 +176,7 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return ""
+        return "You have fed your pet."
 
     # cannot clean if pet is fully clean
     def clean_pet(self):
@@ -198,7 +198,7 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return ""
+        return "You have cleaned you pet."
 
     # spend points put pet in the hotel
     # returns false if user doesn't have enough points or pet is alread in the hotel
