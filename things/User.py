@@ -48,9 +48,12 @@ class User(actor):
                         output.append(self.status_pet())
                     if 'increase_happiness' in next_state:
                         s = self.play_pet()
-                        print(MY_GAME_LOGIC['guess the number']['next_state']['content'])
+                        rand_int = random.randrange(2) #random index
+                        # The below line gets a random string from said random index
+                        string_pain = random.choice(MY_GAME_LOGIC['guess the number']['next_state'][rand_int]['content'])
+                        print (string_pain) #WHEN IN DOUBT, PRINT IT OUT
                         if(s == ''):
-                            output.append(random.choice(MY_GAME_LOGIC['guess the number']['next_state']['content'])) #grab random line from json
+                            output.append(string_pain) # Appends that random string
                         else:
                             output.append(s) #else append the error message from the method
                     if 'cost' in next_state:
