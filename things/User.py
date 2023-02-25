@@ -49,7 +49,7 @@ class User(actor):
                     if 'increase_happiness' in next_state:
                         s = self.play_pet()
                         if(s == ''):
-                            output.append(random.choice(MY_GAME_LOGIC['next_state']['content'])) #grab random line from json
+                            output.append(random.choice(MY_GAME_LOGIC[self.state]['next_state']['content'])) #grab random line from json
                         else:
                             output.append(s) #else append the error message from the method
                     if 'cost' in next_state:
