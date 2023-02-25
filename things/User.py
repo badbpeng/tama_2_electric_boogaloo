@@ -54,7 +54,7 @@ class User(actor):
                             output.append(s) #else append the error message from the method
                     if 'cost' in next_state:
                         #check for bought item
-                        if msg_input == "gacha":
+                        if msg_input == "gacha" or msg_input == "Gacha":
                             #points modifier
                             if self.points >= 3:
                                 self.points -= 3
@@ -62,7 +62,7 @@ class User(actor):
                                 output.append("You do not have enough points to spend on the gacha game.")
                                 self.state = "idle" #skip straight back to idle
                         
-                        if msg_input == "pet hotel":
+                        if msg_input == "pet hotel" or msg_input == "Pet hotel" or msg_input == "Pet Hotel":
                             if self.pet.check_hotel() == True: #don't buy another stay at the hotel, ask to check out borb early instead
                                 self.state = "get BORB" #skip straight to get borb
                             else: #pet isn't already in hotel, allow user to buy stay if enough funds
