@@ -80,8 +80,8 @@ class User(actor):
                         # TODO get that cost change working
                     if self.state == "get gacha": #Gets a random gacha image and throws it into the media list
                         media.append(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
-                        print(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
-                        print("get gacha triggered")
+                        #print(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
+                        #print("get gacha triggered")
                     found_match = True
                     break
 
@@ -93,13 +93,9 @@ class User(actor):
             if self.state != "idle":
                 if type(MY_GAME_LOGIC[ self.state ]['content']) is str:
                     output.append(MY_GAME_LOGIC[ self.state ]['content'])
-                if self.state is "points amount":
+                if self.state == "points amount":
                     output[-1] = output[-1].replace("[points]", self.points)
                     print("triggered")
-            if 'get gacha' in MY_GAME_LOGIC[ self.state ]: #Gets a random gacha image and throws it into the media list
-                media.append(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
-                print(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
-                print("get gacha triggered outside choice for loop")
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
             if 'next_state' not in MY_GAME_LOGIC[ self.state ] or type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str:
