@@ -65,7 +65,7 @@
             {
                 "input":"shop",
                 "next_state":"points amount",
-                "price" : 0
+                "price" : 0 
             },
 
             {
@@ -111,7 +111,7 @@
             },
             {
                 "input" : "3",
-                "guess":false,
+                "next_state":"idle",
                 "content": ["You guessed right!", "Your guess was wrong!","Your guess was wrong!"],
                 "increase_happiness": 1
             }
