@@ -80,15 +80,15 @@
 		"content":"Which game would you like to play?  Choose from 'guess the number', 'name that birb!', or 'what am I?'.",
         "next_state": [
 				{
-					"input": ["guess the number", "guess the number"],
+					"input": "guess the number",
 					"next_state":"guess the number"
 				},
 				{
-					"input": ["Name that birb", "name that birb!"],
+					"input": "Name that birb",
 					"next_state":"name that birb!"
 				},
 				{
-                    "input": ["what am i", "what am i?"],
+                    "input": "what am i",
                     "next_state":"what am i?"
 				}
             ]
