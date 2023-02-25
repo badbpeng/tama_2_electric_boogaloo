@@ -78,7 +78,7 @@ class User(actor):
                                     output.append("You do not have enough points to spend on the BORB hotel.")
                                     self.state = "idle" #skip straight back to idle
                         # TODO get that cost change working
-                    if 'get gacha' in next_state: #Gets a random gacha image and throws it into the media list
+                    if self.state == "get gacha": #Gets a random gacha image and throws it into the media list
                         media.append(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
                         print(random.choice(MY_GAME_LOGIC[self.state]['gacha_pic']))
                         print("get gacha triggered")
