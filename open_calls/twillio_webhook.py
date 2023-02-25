@@ -49,7 +49,7 @@ def handle_request():
             to=request.form['From'])
 
     for resp in response:
-        if resp != '': # Text sends second
+        if resp != '':  # Text sends second
             message = g.sms_client.messages.create(
                 body=resp,
                 from_=yml_configs['twillio']['phone_number'],
