@@ -83,7 +83,10 @@ class User(actor):
         while True:
             print(self.state)
             if self.state != "idle":
-                output.append(MY_GAME_LOGIC[ self.state ]['content'])
+                    if type(MY_GAME_LOGIC[ self.state ]['content']) != str:
+                        output.append(random.choice(MY_GAME_LOGIC[ self.state]['content']))
+                    else:
+                        output.append(MY_GAME_LOGIC[ self.state ]['content'])
                 if self.state is "points amount":
                     output[-1] = output[-1].replace("[points]", self.points)
             if 'media' in MY_GAME_LOGIC[ self.state ]:
