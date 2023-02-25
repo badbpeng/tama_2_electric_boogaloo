@@ -48,6 +48,7 @@ class User(actor):
                         output.append(self.status_pet())
                     if 'increase_happiness' in next_state:
                         s = self.play_pet()
+                        print(MY_GAME_LOGIC['guess the number']['next_state']['content'])
                         if(s == ''):
                             output.append(random.choice(MY_GAME_LOGIC['guess the number']['next_state']['content'])) #grab random line from json
                         else:
