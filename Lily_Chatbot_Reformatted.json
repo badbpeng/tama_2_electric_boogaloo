@@ -2,7 +2,7 @@
     "init":{
         "content":"Welcome to Tamagotchi BORB Edition!  A shimaenaga has been gifted to you!",
         "media":"https://stickershop.line-scdn.net/sticonshop/v1/sticon/62396adefe82522f084cbf64/iPhone/010.png?v=2",
-        "next_state":"tutorial"
+        "next_state":"naming"
     },
 
     "naming":{
