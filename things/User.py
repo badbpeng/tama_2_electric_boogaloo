@@ -15,7 +15,7 @@ with open('Lily_Chatbot_Reformatted.json', 'r') as myfile:
 class User(actor):
     def __init__(self, phone_number):
         # TODO after bug fixing make vars private
-        self.pet = self.give_pet() # make the pet [TEST]
+        self.pet = Pet() # make the pet [TEST]
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
         self.points = 0 # user starts with 0 points
         super().__init__(phone_number)
@@ -33,7 +33,7 @@ class User(actor):
         #print(self.state)
         print(msg_input)
 
-        if self.state == "naming":
+        if self.state == "naming" or "naming new":
             self.pet.name = msg_input
             print(self.pet.name)
             self.state = MY_GAME_LOGIC[self.state]['next_state'][0]['next_state']
@@ -116,7 +116,8 @@ class User(actor):
     
     # TODO: add rng, grab pet's name and noise from database
     def give_pet(self):
-        return Pet()
+        self.state = "naming new" # name the new pet
+        return Pet() # return a new pet
 
     # game logic will need to load this user's pickle before calling this function, key for every user's pickle is thier phone #
     # checks if the pet's values needs to be updated

@@ -232,6 +232,14 @@
     "leave hotel":{
         "content":"Your pet has left the hotel early.",
         "next_state":"idle"
-    }
+    },
 
+    "naming new":{
+        "content": "Please enter a name for your pet:",
+        "next_state":[{
+            "input" : "ok",
+            "next_state":"idle"
+        }]
+    
+    }
 }
