@@ -115,7 +115,7 @@ class User(actor):
     # checks if the pet's values needs to be updated
     def check_pet(self):
         # decreases the pet's values by 1 for every hour since last updated, if it is not in the hotel
-        while self.pet.check_hotel() == False and time.time() - self.time > 3600:
+        while self.pet.check_hotel() == False and time.time() - self.time > 60:
             # decrease all of the pets values
             if self.pet.decrease_hunger() == False:
                 self.pet_leave()
@@ -129,7 +129,7 @@ class User(actor):
                 self.pet_leave()
                 # TODO exit out of the old pet's function that called this (return state to input)
                 return False
-            self.time += 3600 # advance an hour
+            self.time += 60 # advance an hour
 
         # update the time
         self.time = time.time()
