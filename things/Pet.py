@@ -18,7 +18,7 @@ class Pet:
     # decreases the pet's happiness
     # returns false if happiness = 0 (pet will leave)
     def decrease_happiness(self):
-        if self.happiness == 0:
+        if self.happiness == 1:
             return False
         else:
             self.happiness -= 1
@@ -40,7 +40,7 @@ class Pet:
     # decreases the pet's hunger
     # returns false if hunger = 0 (pet will leave)
     def decrease_hunger(self):
-        if self.hunger == 0:
+        if self.hunger == 1:
             return False
         else:
             self.hunger -= 1
@@ -60,7 +60,7 @@ class Pet:
     # decreases the pet's health
     # returns false if health = 0 (pet will leave)
     def decrease_health(self):
-        if (self.health == 0):
+        if self.health == 1:
             return False
         else:
             self.health -= 1
