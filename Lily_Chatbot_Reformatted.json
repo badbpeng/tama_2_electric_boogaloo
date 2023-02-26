@@ -57,7 +57,7 @@
     },
 
     "idle": {
-        "content": "You are in Idle state [DEBUG]",
+        "content": "You may enter any command.",
         "next_state" : [
             {
                 "input" : "feed",
