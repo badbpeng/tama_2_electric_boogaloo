@@ -248,7 +248,8 @@ class User(actor):
 
     # returns string of pet's values
     def status_pet(self):
-        self.check_pet() # check pet's values against time
+        if not self.check_pet(): # check pet's values against time
+            return "Your pet has died, you have been given a new pet."
 
         status = self.pet.status_happiness() + "\n"
         status = status + self.pet.status_health() + "\n"
