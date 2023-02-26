@@ -32,9 +32,12 @@ class User(actor):
         
         #print(self.state)
         print(msg_input)
+
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
             print('running here too')
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
+                if self.state == "naming":
+                    self.pet.name = msg_input
                 if msg_input.lower() == next_state['input'].lower():
                     self.state = next_state['next_state']
                     print(self.state)

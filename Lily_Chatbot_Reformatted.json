@@ -7,7 +7,9 @@
 
     "naming":{
         "content": "Please enter a name for your pet:",
-        "next_state":"tutorial"
+        "next_state":[{
+            "next_state":"tutorial"
+        }]
     
     },
 
