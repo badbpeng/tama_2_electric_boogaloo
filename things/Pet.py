@@ -29,7 +29,7 @@ class Pet:
 
     # returns a string based on the pet's degree of happiness
     def status_happiness(self):
-        return self.name + " has " + self.happiness + " /10 happiness."
+        return "%s has %d/10 happiness." % (self.name, self.happiness)
 
     # game logic must prevent user from feeding when hungry = 10
     # bad naming convention
@@ -51,7 +51,7 @@ class Pet:
 
     # returns a string based on the pet's degree of hunger
     def status_hunger(self):
-        return self.name + " has " + self.hunger + " /10 hunger."
+        return "%s has %d/10 hunger." % (self.name, self.hunger)
 
     # game logic must prevent user from cleaning when health = 10
     def increase_health(self):
@@ -71,7 +71,7 @@ class Pet:
 
     # returns a string based on the pet's degree of health/cleanliness
     def status_health(self):
-        return self.name + " has " + self.health + " /10 health."
+        return "%s has %d/10 health." % (self.name, self.health)
     
     # returns whether or not the pet is in the hotel
     def check_hotel(self):
