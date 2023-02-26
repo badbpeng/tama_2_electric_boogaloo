@@ -17,7 +17,7 @@ class User(actor):
         # TODO after bug fixing make vars private
         self.pet = Pet() # make the pet [TEST]
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
-        self.points = 0 # user starts with 0 points
+        self.points = 100000 # user starts with 0 points
         super().__init__(phone_number)
         #self.state = "init" # user starts in tutorial
 
@@ -156,12 +156,12 @@ class User(actor):
             return "%s doesn't want to play" % self.pet.get_name()
         
         self.pet.increase_happiness()
-        #msg = ""
+        msg = "You have played with %s.\n" % self.pet.get_name()
 
         # 20% chance to get a point after feeding
         if random.randint(1, 5) == 1:
             self.give_points(1)
-        #    msg = "You have earned a BORB point for taking care of your shimaenaga!"
+            msg += "You have earned a BORB point for taking care of your shimaenaga!"
 
 
         # update the time
@@ -169,9 +169,8 @@ class User(actor):
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
-
-        return ""
-        #return msg
+            
+        return msg
     
     # cannot feed pet is pet is full
     def feed_pet(self):
@@ -182,10 +181,13 @@ class User(actor):
             return "%s is too full to eat." % self.pet.get_name()
         
         self.pet.increase_hunger()
+        msg = "You have fed %s.\n" % self.pet.get_name()
 
         # 20% chance to get a point after feeding
         if random.randint(1, 5) == 1:
             self.give_points(1)
+            msg += "You have earned a BORB point for taking care of your shimaenaga!"
+            
 
         # update the time
         self.time = time.time()
@@ -193,7 +195,7 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return "You have fed %s." % self.pet.get_name()
+        return msg
 
     # cannot clean if pet is fully clean
     def clean_pet(self):
@@ -204,10 +206,12 @@ class User(actor):
             return "%s is already clean." % self.pet.get_name()
         
         self.pet.increase_health()
+        msg = "You have cleaned %s.\n" % self.pet.get_name()
 
         # 20% chance to get a point after cleaning
         if random.randint(1, 5) == 1:
             self.give_points(1)
+            msg += "You have earned a BORB point for taking care of your shimaenaga!"
 
         # update the time
         self.time = time.time()
@@ -215,7 +219,7 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return "You have cleaned %s." % self.pet.get_name()
+        return msg
 
     # spend points put pet in the hotel
     # returns false if user doesn't have enough points or pet is alread in the hotel
