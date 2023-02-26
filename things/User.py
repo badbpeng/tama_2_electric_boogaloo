@@ -36,7 +36,7 @@ class User(actor):
         if self.state == "naming" or self.state == "naming new":
             self.pet.name = msg_input
             print(self.pet.name)
-            self.state = MY_GAME_LOGIC[self.state]['next_state']
+            self.state = MY_GAME_LOGIC[self.state]['next_state'][0]['next_state']
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
             print('running here too')
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
