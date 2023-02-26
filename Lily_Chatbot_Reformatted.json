@@ -20,7 +20,7 @@
     },
 
     "tutorial":{
-        "content":"let's learn how to care for [name]. [name] will grow hungry with time, to feed it simply text feed.  Enter ok to advance through the tutorial:",
+        "content":"let's learn how to care for [name]. [name] will grow hungry with time, to feed it simply text 'feed'.  Enter 'ok' to advance through the tutorial:",
         "next_state":[{
             "input" : "ok",
             "next_state":"cleaning"
@@ -28,7 +28,7 @@
     },
 
     "cleaning":{
-        "content":"[name] and its virtual home need a good cleaning.  Text clean to clean up after your pet!  Enter ok to advance through the tutorial:",
+        "content":"[name] and its virtual home need a good cleaning.  Text 'clean' to clean up after your pet!  Enter 'ok' to advance through the tutorial:",
         "next_state":[{
             "input" : "ok",
             "next_state":"playing"
@@ -36,7 +36,7 @@
     },
 
     "playing":{
-        "content":"[name] will grow bored over time, make sure to keep it entertained!  Text play to start a game with your pet!  Enter ok to advance through the tutorial:",
+        "content":"[name] will grow bored over time, make sure to keep it entertained!  Text 'play' to start a game with your pet!  Enter 'ok' to advance through the tutorial:",
         "next_state":[{
             "input" : "ok",
             "next_state":"BORB points"
@@ -44,7 +44,7 @@
     },
 
     "BORB points":{
-        "content":"As you interact with [name], you will earn points for caring for it. These points can be exchanged for things in the BORB shop. To open the BORB shop text shop. Enter ok to advance through the tutorial:",
+        "content":"As you interact with [name], you will earn points for caring for it. These points can be exchanged for things in the BORB shop. To open the BORB shop text 'shop'. Enter 'ok' to advance through the tutorial:",
         "next_state":[{
             "input" : "ok",
             "next_state":"status"
@@ -57,6 +57,7 @@
     },
 
     "idle": {
+        "content": "You are in Idle state [DEBUG]",
         "next_state" : [
             {
                 "input" : "feed",
