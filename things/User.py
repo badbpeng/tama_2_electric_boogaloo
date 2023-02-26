@@ -57,12 +57,12 @@ class User(actor):
                         s = self.play_pet()
                         rand_int = random.randrange(2) #random index
                         # The below line gets a random string from said random index
-                        string_pain = random.choice(MY_GAME_LOGIC['guess the number']['next_state'][rand_int]['content'])
+                        string_pain = random.choice(MY_GAME_LOGIC['guess the number']['next_state'][rand_int]['content']) + "\n"
                         print (string_pain) #WHEN IN DOUBT, PRINT IT OUT
-                        if(s == ''):
-                            output.append(string_pain) # Appends that random string
-                        else:
-                            output.append(s) #else append the error message from the method
+                        #if(s == ''):
+                            #output.append(string_pain) # Appends that random string
+                        #else:
+                        output.append(s + string_pain) #else append the error message from the method
                     if 'cost' in next_state:
                         #check for bought item
                         if msg_input == "gacha" or msg_input == "Gacha":
