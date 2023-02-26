@@ -9,9 +9,14 @@
         "content": "Please enter a name for your pet:",
         "next_state":[{
             "input" : "ok",
-            "next_state":"tutorial"
+            "next_state":"name_worked"
         }]
     
+    },
+
+    "name_worked" : {
+      "content" : "Your pet is named [name].",
+      "next_state": "tutorial"
     },
 
     "tutorial":{

@@ -103,7 +103,7 @@ class User(actor):
                     print("triggered")
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
-            if output[-1].contains("[name]"):
+            if output[-1].contains("[name]") != -1:
                 output[-1] = output[-1].replace("[name]", self.pet.name)
             if 'next_state' not in MY_GAME_LOGIC[ self.state ] or type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str:
                 break
