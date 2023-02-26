@@ -80,3 +80,6 @@ class Pet:
     # changes the bool value of hotel
     def change_hotel(self):
         self.hotel = not self.hotel
+
+    def get_name(self):
+        return self.name

@@ -142,10 +142,10 @@ class User(actor):
     # plays with pet
     def play_pet(self):
         if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
+            return "%s has died, you have been given a new pet." % self.pet.get_name()
         
         if self.pet.check_happiness() == 10:
-            return "Your pet doesn't want to play"
+            return "%s doesn't want to play" % self.pet.get_name()
         
         self.pet.increase_happiness()
         #msg = ""
@@ -168,10 +168,10 @@ class User(actor):
     # cannot feed pet is pet is full
     def feed_pet(self):
         if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
+            return "%s has died, you have been given a new pet." % self.pet.get_name()
 
         if self.pet.check_hunger() == 10:
-            return "Your pet is too full to eat."
+            return "%s is too full to eat." % self.pet.get_name()
         
         self.pet.increase_hunger()
 
@@ -185,15 +185,15 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return "You have fed your pet."
+        return "You have fed %s." % self.pet.get_name()
 
     # cannot clean if pet is fully clean
     def clean_pet(self):
         if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
+            return "%s has died, you have been given a new pet." % self.pet.get_name()
 
         if self.pet.check_health() == 10:
-            return "Your pet is already clean."
+            return "%s is already clean." % self.pet.get_name()
         
         self.pet.increase_health()
 
@@ -207,16 +207,16 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return "You have cleaned you pet."
+        return "You have cleaned %s." % self.pet.get_name()
 
     # spend points put pet in the hotel
     # returns false if user doesn't have enough points or pet is alread in the hotel
     def hotel_pet(self):
         if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
+            return "%s has died, you have been given a new pet." % self.pet.get_name()
 
         if self.pet.check_hotel() == True or self.points < 10:
-            return "Your pet cannot enter the hotel."
+            return "%s cannot enter the hotel." % self.pet.get_name()
         
         self.pet.change_hotel()
         # TODO send a message that the pet has entered the hotel
@@ -233,7 +233,7 @@ class User(actor):
     # returns false if the pet is not in the hotel
     def check_out_pet(self):
         if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
+            return "%s has died, you have been given a new pet." % self.pet.get_name()
         
         self.pet.change_hotel()
         # TODO send a message that the pet has exited the hotel
@@ -249,7 +249,7 @@ class User(actor):
     # returns string of pet's values
     def status_pet(self):
         if not self.check_pet(): # check pet's values against time
-            return "Your pet has died, you have been given a new pet."
+            return "%s has died, you have been given a new pet." % self.pet.get_name()
 
         status = self.pet.status_happiness() + "\n"
         status = status + self.pet.status_health() + "\n"
