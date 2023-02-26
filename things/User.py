@@ -47,8 +47,8 @@ class User(actor):
                         output.append(self.feed_pet())
                     if 'clean_pet' in next_state:
                         output.append(self.clean_pet())
-                    if 'play_pet' in next_state:
-                        output.append(self.play_pet())
+                    #if 'play_pet' in next_state:
+                        #output.append(self.play_pet())
                     if 'media' in next_state:
                         media.append(MY_GAME_LOGIC[ self.state ]['media'])
                     if 'status_pet' in next_state:
@@ -169,7 +169,7 @@ class User(actor):
         # update the pickle
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
-            
+
         return msg
     
     # cannot feed pet is pet is full
