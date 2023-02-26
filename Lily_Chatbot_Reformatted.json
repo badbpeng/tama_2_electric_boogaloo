@@ -238,7 +238,7 @@
     "naming new":{
         "content": "Please enter a name for your pet:",
         "next_state":[{
-            "input" : "ok",
+            "input" : "",
             "next_state":"idle"
         }]
     

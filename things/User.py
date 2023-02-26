@@ -62,7 +62,7 @@ class User(actor):
                         #if(s == ''):
                             #output.append(string_pain) # Appends that random string
                         #else:
-                        output.append(s + string_pain) #else append the error message from the method
+                        output.append(string_pain + s) #else append the error message from the method
                     if 'cost' in next_state:
                         #check for bought item
                         if msg_input == "gacha" or msg_input == "Gacha":
