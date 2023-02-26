@@ -33,7 +33,7 @@ class User(actor):
         #print(self.state)
         print(msg_input)
 
-        if self.state == "naming" or "naming new":
+        if self.state == "naming" or self.state == "naming new":
             self.pet.name = msg_input
             print(self.pet.name)
             self.state = MY_GAME_LOGIC[self.state]['next_state'][0]['next_state']
