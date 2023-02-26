@@ -120,12 +120,17 @@
     },
 	
 	"points amount":{
-	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game or put your pet in the hotel?  Enter gacha or hotel:",
+	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game?  Enter gacha or exit:",
 		"next_state":[
             {
                 "input":"gacha",
                 "next_state":"get gacha",
                 "cost":-3
+            },
+            {
+                "input":"exit",
+                "next_state":"idle",
+                "cost":0
             },
             {
                 "input":"antibiotics",
