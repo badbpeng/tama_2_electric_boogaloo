@@ -35,8 +35,8 @@ class User(actor):
 
         if self.state == "naming":
             self.pet.name = msg_input
+            print(self.pet.name)
             self.state = MY_GAME_LOGIC[self.state]['next_state'][0]['next_state']
-            output.append("Your pet is named " + self.pet.name + ". Type ok to continue")
         if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # we have choices
             print('running here too')
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
@@ -103,9 +103,10 @@ class User(actor):
                     print("triggered")
             if 'media' in MY_GAME_LOGIC[ self.state ]:
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
+            if output[-1].contains("[name]"):
+                output[-1] = output[-1].replace("[name]", self.pet.name)
             if 'next_state' not in MY_GAME_LOGIC[ self.state ] or type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str:
                 break
-            output[-1] = output[-1].replace("[name]", self.pet.name)
             self.state = MY_GAME_LOGIC[ self.state ]['next_state']
         
         #print("in get_output")
