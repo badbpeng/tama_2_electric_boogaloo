@@ -29,18 +29,7 @@ class Pet:
 
     # returns a string based on the pet's degree of happiness
     def status_happiness(self):
-        if self.happiness == 10:
-            return self.name + " is very happy."
-        elif self.happiness > 5:
-            return self.name + " is pleased."
-        elif self.happiness > 1:
-            return self.name + " is unhappy."
-        else:
-            return self.name + " is very sad!"
-
-    # returns a string, the pet's noise
-    def make_sound(self):
-        return self.sound
+        return self.name + " has " + self.happiness + " /10 happiness."
 
     # game logic must prevent user from feeding when hungry = 10
     # bad naming convention
@@ -62,14 +51,7 @@ class Pet:
 
     # returns a string based on the pet's degree of hunger
     def status_hunger(self):
-        if self.hunger == 10:
-            return self.name + " is full."
-        elif self.hunger > 5:
-            return self.name + " is content."
-        elif self.hunger > 1:
-            return self.name + " is hungry."
-        else:
-            return self.name + " is starving!"
+        return self.name + " has " + self.hunger + " /10 hunger."
 
     # game logic must prevent user from cleaning when health = 10
     def increase_health(self):
@@ -89,14 +71,7 @@ class Pet:
 
     # returns a string based on the pet's degree of health/cleanliness
     def status_health(self):
-        if self.health == 10:
-            return self.name + " is fabulous."
-        elif self.health > 5:
-            return self.name + " is clean."
-        elif self.health > 1:
-            return self.name + " is dirty."
-        else:
-            return self.name + " is filthy!"
+        return self.name + " has " + self.health + " /10 health."
     
     # returns whether or not the pet is in the hotel
     def check_hotel(self):
