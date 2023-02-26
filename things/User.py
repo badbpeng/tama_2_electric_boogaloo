@@ -38,6 +38,8 @@ class User(actor):
             for next_state in MY_GAME_LOGIC[ self.state ]['next_state']:
                 if self.state == "naming":
                     self.pet.name = msg_input
+                    found_match = True
+                    break
                 if msg_input.lower() == next_state['input'].lower():
                     self.state = next_state['next_state']
                     print(self.state)
