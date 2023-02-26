@@ -100,6 +100,7 @@ class User(actor):
                 media.append(MY_GAME_LOGIC[ self.state ]['media'])
             if 'next_state' not in MY_GAME_LOGIC[ self.state ] or type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str:
                 break
+            output[-1] = output[-1].replace("[name]", self.pet.name)
             self.state = MY_GAME_LOGIC[ self.state ]['next_state']
         
         #print("in get_output")
