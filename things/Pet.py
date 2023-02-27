@@ -1,8 +1,8 @@
 class Pet:
     def __init__(self):
-        self.hunger = 10 # pet starts full (/10)
-        self.health = 10 # pet starts healthy (/10)
-        self.happiness = 10 # pet starts happy (/10)
+        self.hunger = 8 # pet starts somewhat full (/10)
+        self.health = 8 # pet starts somewhat healthy (/10)
+        self.happiness = 8 # pet starts somewhat happy (/10)
         self.name = "Your pet" # string, pet's name
         self.hotel = False # pet starts not in hotel
 
