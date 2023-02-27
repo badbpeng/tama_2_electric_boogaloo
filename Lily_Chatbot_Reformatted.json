@@ -135,7 +135,7 @@
     },
 	
 	"points amount":{
-	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game?  Enter gacha or exit:",
+	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game or check your pet into the BORB hotel?  Enter gacha, hotel, or exit:",
 		"next_state":[
             {
                 "input":"gacha",
@@ -153,7 +153,7 @@
                 "cost":-2
             },
             {
-                "input":"pet hotel",
+                "input":"hotel",
                 "next_state":"get hotel",
                 "cost":-2
             }

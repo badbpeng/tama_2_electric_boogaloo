@@ -79,6 +79,7 @@ class User(actor):
                             else: #pet isn't already in hotel, allow user to buy stay if enough funds
                                 if self.points >= 2:
                                     self.points -= 2
+                                    self.hotel_pet()
                                 else:
                                     output.append("You do not have enough points to spend on the BORB hotel.")
                                     self.state = "idle" #skip straight back to idle
@@ -98,6 +99,8 @@ class User(actor):
             #if self.state != "idle":
             if type(MY_GAME_LOGIC[ self.state ]['content']) is str:
                 output.append(MY_GAME_LOGIC[ self.state ]['content'])
+            if self.state == "leave hotel":
+                self.check_out_pet
             if self.state == "points amount":
                 output[-1] = output[-1].replace("[points]", str(self.points))
                 print("triggered")
