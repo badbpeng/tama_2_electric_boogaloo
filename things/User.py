@@ -17,7 +17,7 @@ class User(actor):
         # TODO after bug fixing make vars private
         self.pet = Pet() # make the pet [TEST]
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
-        self.points = 100000 # user starts with 0 points
+        self.points = 0 # user starts with 0 points
         super().__init__(phone_number)
         #self.state = "init" # user starts in tutorial
 
@@ -123,7 +123,7 @@ class User(actor):
     # checks if the pet's values needs to be updated
     def check_pet(self):
         # decreases the pet's values by 1 for every hour since last updated, if it is not in the hotel
-        while self.pet.check_hotel() == False and time.time() - self.time > 10:
+        while self.pet.check_hotel() == False and time.time() - self.time > 120:
             # decrease all of the pets values
             if self.pet.decrease_hunger() == False:
                 self.pet_leave()
@@ -137,7 +137,7 @@ class User(actor):
                 self.pet_leave()
                 # TODO exit out of the old pet's function that called this (return state to input)
                 return False
-            self.time += 10 # advance an hour
+            self.time += 120 # advance an hour
 
         # update the time
         self.time = time.time()
