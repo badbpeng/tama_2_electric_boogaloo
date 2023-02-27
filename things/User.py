@@ -73,7 +73,7 @@ class User(actor):
                                 output.append("You do not have enough points to spend on the gacha game.")
                                 self.state = "idle" #skip straight back to idle
                         
-                        if msg_input == "pet hotel" or msg_input == "Pet hotel" or msg_input == "Pet Hotel":
+                        if msg_input == "hotel" or msg_input == "Hotel":
                             if self.pet.check_hotel() == True: #don't buy another stay at the hotel, ask to check out borb early instead
                                 self.state = "get BORB" #skip straight to get borb
                             else: #pet isn't already in hotel, allow user to buy stay if enough funds
