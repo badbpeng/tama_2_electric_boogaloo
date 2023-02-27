@@ -152,6 +152,9 @@ class User(actor):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
         
+        if self.pet.check_hotel() == True:
+            return "%s is in the hotel." % self.pet.get_name()
+
         if self.pet.check_happiness() == 10:
             return "%s doesn't want to play" % self.pet.get_name()
         
@@ -177,9 +180,12 @@ class User(actor):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
 
+        if self.pet.check_hotel() == True:
+            return "%s is in the hotel." % self.pet.get_name()
+        
         if self.pet.check_hunger() == 10:
             return "%s is too full to eat." % self.pet.get_name()
-        
+
         self.pet.increase_hunger()
         msg = "You have fed %s.\n" % self.pet.get_name()
 
@@ -201,6 +207,9 @@ class User(actor):
     def clean_pet(self):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
+
+        if self.pet.check_hotel() == True:
+            return "%s is in the hotel." % self.pet.get_name()
 
         if self.pet.check_health() == 10:
             return "%s is already clean." % self.pet.get_name()
@@ -227,8 +236,8 @@ class User(actor):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
 
-        if self.pet.check_hotel() == True or self.points < 10:
-            return "%s cannot enter the hotel." % self.pet.get_name()
+        if self.pet.check_hotel() == True:
+            return "%s is already in the hotel." % self.pet.get_name()
         
         self.pet.change_hotel()
         # TODO send a message that the pet has entered the hotel
