@@ -17,7 +17,7 @@ class User(actor):
         # TODO after bug fixing make vars private
         self.pet = Pet() # make the pet [TEST]
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
-        self.points = 0 # user starts with 0 points
+        self.points = 10 # user starts with 0 points
         super().__init__(phone_number)
         #self.state = "init" # user starts in tutorial
 
