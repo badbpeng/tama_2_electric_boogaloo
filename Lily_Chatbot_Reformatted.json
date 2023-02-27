@@ -57,7 +57,7 @@
     },
 
     "idle": {
-        "content": "You may enter any command.",
+        "content": "You may 'feed', 'play', 'clean', go to the 'shop', or check [name]'s 'status'.",
         "next_state" : [
             {
                 "input" : "feed",
