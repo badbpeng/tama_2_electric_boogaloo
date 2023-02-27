@@ -126,7 +126,7 @@ class User(actor):
     # checks if the pet's values needs to be updated
     def check_pet(self):
         # decreases the pet's values by 1 for every hour since last updated, if it is not in the hotel
-        while self.pet.check_hotel() == False and time.time() - self.time > 10:
+        while self.pet.check_hotel() == False and time.time() - self.time > 60:
             # decrease all of the pets values
             if self.pet.decrease_hunger() == False:
                 self.pet_leave()
@@ -140,7 +140,7 @@ class User(actor):
                 self.pet_leave()
                 # TODO exit out of the old pet's function that called this (return state to input)
                 return False
-            self.time += 10 # advance an hour
+            self.time += 60 # advance an hour
 
         # update the time
         self.time = time.time()
@@ -251,13 +251,16 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return ""
+        return "%s has been put in the hotel." % self.pet.get_name()
     
     # take pet out of the hotel
     # returns false if the pet is not in the hotel
     def check_out_pet(self):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
+
+        if self.pet.check_hotel == False:
+            return "%s is not in the hotel." % self.pet.get_name()
         
         self.pet.change_hotel()
         # TODO send a message that the pet has exited the hotel
@@ -268,7 +271,7 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
         
-        return ""
+        return "%s has been taken out of the hotel." % self.pet.get_name()
 
     # returns string of pet's values
     def status_pet(self):
