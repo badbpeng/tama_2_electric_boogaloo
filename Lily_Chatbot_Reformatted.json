@@ -52,7 +52,7 @@
     },
 
     "status":{
-        "content":"To check [name]'s status, text status.  Keep those points from getting too low otherwise your pet may die or run away! That's all for the tutorial.",
+        "content":"To check [name]'s status, text 'status'.  Keep those points from getting too low otherwise your pet may die or run away! That's all for the tutorial.",
         "next_state":"idle"
     },
 
