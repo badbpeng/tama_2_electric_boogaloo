@@ -213,7 +213,7 @@
     },
     
     "get hotel":{
-        "Content":"Your pet has been checked into BORB hotel.  No point penalties will be deducted for 24 hours.",
+        "Content":"Your pet has been checked into BORB hotel. No point penalties will be deducted for 24 hours.",
         "next_state":"idle"
     },
 
@@ -236,11 +236,15 @@
     },
 
     "naming new":{
-        "content": "Please enter a name for your pet:",
+        "content": "Please enter a name for your new pet:",
         "next_state":[{
-            "input" : "",
-            "next_state":"idle"
+            "input" : "ok",
+            "next_state":"new name_worked"
         }]
-    
-    }
+    },
+
+    "new name_worked" : {
+        "content" : "Your pet is named [name].",
+        "next_state": "idle"
+      }
 }
