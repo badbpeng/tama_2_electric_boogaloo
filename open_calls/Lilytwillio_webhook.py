@@ -7,17 +7,19 @@ from os.path import exists
 from tools.logging import logger
 from things.actors import actor
 
-
 import random
 import json
 import pickle
 
 yml_configs = {}
 BODY_MSGS = []
+
 with open('config.yml', 'r') as yml_file: #configuration file
+
     yml_configs = yaml.safe_load(yml_file)
 
 CORPUS = {}
+
 
 #this file is what is used for the dialogue response
 with open('Lily_Chatbot.json', 'r') as myfile:
@@ -31,6 +33,7 @@ def handle_request():
     #if the phone number associated with the user has a history, it is contained in the pickle
     #file named after their phone number.  The following opens the pickle if it exists otherwise it
     #makes a new actor
+
     act = None
     if exists( f"users/{request.form['From']}.pkl") :
         with open(f"users/{request.form['From']}.pkl", 'rb') as p:
@@ -53,10 +56,12 @@ def handle_request():
     sent_input = str(request.form['Body']).lower()
     if sent_input in CORPUS['input']:
         response = random.choice(CORPUS['input'][sent_input])
+
     else:
         CORPUS['input'][sent_input] = ['DID NOT FIND']
         with open('chatbot_corpus.json', 'w') as myfile:
             myfile.write(json.dumps(CORPUS, indent=4 ))
+
 
     logger.debug(response)#logger shows the response to the console
 
@@ -67,5 +72,4 @@ def handle_request():
                      media_url=['http://54.67.106.33/static/Shimae-naga_joy.png'],
                      to=request.form['From'])
     return json_response( status = "ok" )
-
 

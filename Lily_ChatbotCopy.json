@@ -83,7 +83,7 @@
         "next_state":"input"
     },
 
-    "input": {
+    "idle": {
         "feed": [
             "call feed method"
         ],
@@ -115,17 +115,17 @@
             {
                 "input":"gacha",
                 "next_state":"get gacha",
-                "cost":10
+                "cost":-10
             },
             {
                 "input":"antibiotics",
                 "next_state":"get antibiotics",
-                "cost":5
+                "cost":-5
             },
             {
                 "input":"pet hotel",
                 "next_state":"get hotel",
-                "cost":10
+                "cost":-10
             }
         ]
     },
@@ -139,14 +139,14 @@
             ".random pulls a random picture url from the selection in here"
         ],
         "send_media":true,
-        "next_state":"input"
+        "next_state":"idle"
     },
 
     "get antibiotics":{
         "content":"The antibiotics have cured your pet!",
         "media":"",
         "send_media":false,
-        "next_state":"input"
+        "next_state":"idle"
     },
     
     "get hotel":{
@@ -167,7 +167,7 @@
             },
             {
                 "input":"no",
-                "next_state":"input"
+                "next_state":"idle"
             }]
     },
 
@@ -175,7 +175,7 @@
         "content":"Your pet has left the hotel early.",
         "media":"",
         "send_media":false,
-        "next_state":"input"
+        "next_state":"idle"
     }
 
 }
