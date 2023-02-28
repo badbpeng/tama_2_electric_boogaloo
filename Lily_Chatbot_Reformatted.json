@@ -226,12 +226,12 @@
             },
             {
                 "input":"no",
-                "next_state":"idle"
+                "next_state":"get BORB"
             }]
     },
 
     "leave hotel":{
-        "content":"Your pet has left the hotel early.",
+        "content":"[name] has left the hotel early.",
         "next_state":"idle"
     },
 
