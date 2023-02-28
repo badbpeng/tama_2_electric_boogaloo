@@ -218,10 +218,10 @@
     },
 
     "get BORB":{
-        "content":"[name] is in the BORB hotel. To check [name] out from the BORB hotel early enter 'hotel'",
+        "content":"[name] is in the BORB hotel. To check [name] out from the BORB hotel early enter 'check out'",
         "next_state":[
             {
-                "input":"hotel",
+                "input":"check out",
                 "next_state":"leave hotel"
             }]
     },
