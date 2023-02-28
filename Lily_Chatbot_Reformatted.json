@@ -218,7 +218,7 @@
     },
 
     "get BORB":{
-        "content":"Check [name] out early from the BORB hotel? 'yes' or 'no'.",
+        "content":"Check [name] out from the BORB hotel? 'yes' or 'no'.",
         "next_state":[
             {
                 "input":"yes",
@@ -231,7 +231,7 @@
     },
 
     "leave hotel":{
-        "content":"[name] has left the hotel early.",
+        "content":"[name] has left the hotel.",
         "next_state":"idle"
     },
 
