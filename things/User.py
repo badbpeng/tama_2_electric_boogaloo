@@ -172,8 +172,8 @@ class User(actor):
         self.pet.increase_happiness()
         msg = "You have played with %s.\n" % self.pet.get_name()
 
-        # 20% chance to get a point after feeding
-        if random.randint(1, 5) == 1:
+        # 50% chance to get a point after feeding
+        if random.randint(1, 2) == 1:
             self.give_points(1)
             msg += "You have earned a BORB point for taking care of your shimaenaga!"
 
@@ -199,8 +199,8 @@ class User(actor):
         self.pet.increase_hunger()
         msg = "You have fed %s.\n" % self.pet.get_name()
 
-        # 20% chance to get a point after feeding
-        if random.randint(1, 5) == 1:
+        # 50% chance to get a point after feeding
+        if random.randint(1, 2) == 1:
             self.give_points(1)
             msg += "You have earned a BORB point for taking care of your shimaenaga!"
             
@@ -227,8 +227,8 @@ class User(actor):
         self.pet.increase_health()
         msg = "You have cleaned %s.\n" % self.pet.get_name()
 
-        # 20% chance to get a point after cleaning
-        if random.randint(1, 5) == 1:
+        # 50% chance to get a point after cleaning
+        if random.randint(1, 2) == 1:
             self.give_points(1)
             msg += "You have earned a BORB point for taking care of your shimaenaga!"
 
