@@ -286,7 +286,7 @@ class User(actor):
         status += "You have %d point" % self.points
         if self.points != 1:
             status += "s"
-        status += " to spend."
+        status += " to spend.\n"
 
         return status
 
