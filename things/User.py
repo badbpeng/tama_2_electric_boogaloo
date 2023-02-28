@@ -163,6 +163,9 @@ class User(actor):
         if self.pet.check_hotel():
             return "%s is in the hotel." % self.pet.get_name()
         
+        if self.pet.check_hotel() == True:
+            return "%s is in the hotel." % self.pet.get_name()
+
         if self.pet.check_happiness() == 10:
             return "%s doesn't want to play" % self.pet.get_name()
         
@@ -190,10 +193,9 @@ class User(actor):
 
         if self.pet.check_hotel():
             return "%s is in the hotel." % self.pet.get_name()
-
         if self.pet.check_hunger() == 10:
             return "%s is too full to eat." % self.pet.get_name()
-        
+
         self.pet.increase_hunger()
         msg = "You have fed %s.\n" % self.pet.get_name()
 
