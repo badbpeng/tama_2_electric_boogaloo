@@ -50,10 +50,10 @@ class User(actor):
                     if 'play_pet' in next_state:
                         if self.pet.check_happiness() == 10:
                             output.append("%s doesn't want to play" % self.pet.get_name())
-                            self.state == "idle" #forced to go back to idle, happiness is maxed
+                            self.state = "idle" #forced to go back to idle, happiness is maxed
                         if self.pet.check_hotel() == True:
                             output.append("%s is in the BORB hotel." % self.pet.get_name())
-                            self.state == "idle" #forced to go back to idle, pet is in hotel
+                            self.state = "idle" #forced to go back to idle, pet is in hotel
                     if 'media' in next_state:
                         media.append(MY_GAME_LOGIC[ self.state ]['media'])
                     if 'status_pet' in next_state:
