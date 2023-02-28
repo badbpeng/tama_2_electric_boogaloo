@@ -79,7 +79,7 @@ class User(actor):
                             else: #pet isn't already in hotel, allow user to buy stay if enough funds
                                 if self.points >= 2:
                                     self.points -= 2
-                                    self.hotel_pet()
+                                    output.append(self.hotel_pet())
                                 else:
                                     output.append("You do not have enough points to spend on the BORB hotel.")
                                     self.state = "idle" #skip straight back to idle
