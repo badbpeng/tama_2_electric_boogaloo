@@ -213,7 +213,7 @@
     },
     
     "get hotel":{
-        "content":"[name] has been checked into BORB hotel. No point penalties will be deducted until you check them out.",
+        "content":"[name] has been checked into the BORB hotel. No point penalties will be deducted until you check them out.",
         "next_state":"get BORB"
     },
 
@@ -227,7 +227,7 @@
     },
 
     "leave hotel":{
-        "content":"[name] has left the hotel.",
+        "content":"[name] has left the BORB hotel.",
         "next_state":"idle"
     },
 
