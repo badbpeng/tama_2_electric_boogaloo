@@ -135,7 +135,7 @@
     },
 	
 	"points amount":{
-	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game or check your pet into the BORB hotel?  Enter gacha, hotel, or exit:",
+	    "content":"Hello there, welcome to the BORB shop.  You have [points] points to spend! Do you want to play the gacha game or check your pet into the BORB hotel?  Enter 'gacha', 'hotel', or 'exit':",
 		"next_state":[
             {
                 "input":"gacha",
@@ -213,12 +213,12 @@
     },
     
     "get hotel":{
-        "content":"[name] has been checked into BORB hotel. No point penalties will be deducted.",
-        "next_state":"idle"
+        "content":"[name] has been checked into BORB hotel. No point penalties will be deducted until you check them out.",
+        "next_state":"get BORB"
     },
 
     "get BORB":{
-        "content":"Check [name] out early from the BORB hotel?",
+        "content":"Check [name] out early from the BORB hotel? 'yes' or 'no'.",
         "next_state":[
             {
                 "input":"yes",
