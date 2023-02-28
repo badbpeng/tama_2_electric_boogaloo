@@ -218,15 +218,11 @@
     },
 
     "get BORB":{
-        "content":"Check [name] out from the BORB hotel? 'yes' or 'no'.",
+        "content":"[name] is in the BORB hotel. To check [name] out from the BORB hotel early enter 'hotel'",
         "next_state":[
             {
-                "input":"yes",
+                "input":"hotel",
                 "next_state":"leave hotel"
-            },
-            {
-                "input":"no",
-                "next_state":"get BORB"
             }]
     },
 
