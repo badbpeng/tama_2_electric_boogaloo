@@ -287,6 +287,10 @@ class User(actor):
         if self.points != 1:
             status += "s"
         status += " to spend.\n"
+        status += "%s is " % self.pet.get_name()
+        if not self.pet.check_hotel():
+            status += "not "
+        status += "in the BORB hotel."
 
         return status
 
