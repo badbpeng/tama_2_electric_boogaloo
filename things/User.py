@@ -17,7 +17,7 @@ class User(actor):
         # TODO after bug fixing make vars private
         self.pet = Pet() # make the pet [TEST]
         self.time = time.time() # record the time of pet creation [Every time the pet is updated, record the time]
-        self.points = 0 # user starts with 0 points
+        self.points = 10 # user starts with 0 points
         super().__init__(phone_number)
         #self.state = "init" # user starts in tutorial
 
@@ -47,8 +47,13 @@ class User(actor):
                         output.append(self.feed_pet())
                     if 'clean_pet' in next_state:
                         output.append(self.clean_pet())
-                    #if 'play_pet' in next_state:
-                        #output.append(self.play_pet())
+                    if 'play_pet' in next_state:
+                        if self.pet.check_happiness() == 10:
+                            output.append("%s doesn't want to play" % self.pet.get_name())
+                            self.state == "idle" #forced to go back to idle, happiness is maxed
+                        if self.pet.check_hotel() == True:
+                            output.append("%s is in the BORB hotel." % self.pet.get_name())
+                            self.state == "idle" #forced to go back to idle, pet is in hotel
                     if 'media' in next_state:
                         media.append(MY_GAME_LOGIC[ self.state ]['media'])
                     if 'status_pet' in next_state:
@@ -73,12 +78,13 @@ class User(actor):
                                 output.append("You do not have enough points to spend on the gacha game.")
                                 self.state = "idle" #skip straight back to idle
                         
-                        if msg_input == "pet hotel" or msg_input == "Pet hotel" or msg_input == "Pet Hotel":
+                        if msg_input == "hotel" or msg_input == "Hotel":
                             if self.pet.check_hotel() == True: #don't buy another stay at the hotel, ask to check out borb early instead
                                 self.state = "get BORB" #skip straight to get borb
                             else: #pet isn't already in hotel, allow user to buy stay if enough funds
                                 if self.points >= 2:
                                     self.points -= 2
+                                    output.append(self.hotel_pet())
                                 else:
                                     output.append("You do not have enough points to spend on the BORB hotel.")
                                     self.state = "idle" #skip straight back to idle
@@ -98,6 +104,8 @@ class User(actor):
             #if self.state != "idle":
             if type(MY_GAME_LOGIC[ self.state ]['content']) is str:
                 output.append(MY_GAME_LOGIC[ self.state ]['content'])
+            if self.state == "leave hotel":
+                self.check_out_pet()
             if self.state == "points amount":
                 output[-1] = output[-1].replace("[points]", str(self.points))
                 print("triggered")
@@ -123,7 +131,7 @@ class User(actor):
     # checks if the pet's values needs to be updated
     def check_pet(self):
         # decreases the pet's values by 1 for every hour since last updated, if it is not in the hotel
-        while self.pet.check_hotel() == False and time.time() - self.time > 3600:
+        while self.pet.check_hotel() == False and time.time() - self.time > 60:
             # decrease all of the pets values
             if self.pet.decrease_hunger() == False:
                 self.pet_leave()
@@ -137,7 +145,7 @@ class User(actor):
                 self.pet_leave()
                 # TODO exit out of the old pet's function that called this (return state to input)
                 return False
-            self.time += 3600 # advance an hour
+            self.time += 60 # advance an hour
 
         # update the time
         self.time = time.time()
@@ -151,6 +159,9 @@ class User(actor):
     def play_pet(self):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
+
+        if self.pet.check_hotel():
+            return "%s is in the hotel." % self.pet.get_name()
         
         if self.pet.check_hotel() == True:
             return "%s is in the hotel." % self.pet.get_name()
@@ -180,9 +191,8 @@ class User(actor):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
 
-        if self.pet.check_hotel() == True:
+        if self.pet.check_hotel():
             return "%s is in the hotel." % self.pet.get_name()
-        
         if self.pet.check_hunger() == 10:
             return "%s is too full to eat." % self.pet.get_name()
 
@@ -208,7 +218,7 @@ class User(actor):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
 
-        if self.pet.check_hotel() == True:
+        if self.pet.check_hotel():
             return "%s is in the hotel." % self.pet.get_name()
 
         if self.pet.check_health() == 10:
@@ -236,8 +246,8 @@ class User(actor):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
 
-        if self.pet.check_hotel() == True:
-            return "%s is already in the hotel." % self.pet.get_name()
+        if self.pet.check_hotel():
+            return "%s cannot enter the hotel." % self.pet.get_name()
         
         self.pet.change_hotel()
         # TODO send a message that the pet has entered the hotel
@@ -248,13 +258,16 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
 
-        return ""
+        return "%s has been put in the hotel." % self.pet.get_name()
     
     # take pet out of the hotel
     # returns false if the pet is not in the hotel
     def check_out_pet(self):
         if not self.check_pet(): # check pet's values against time
             return "%s has died, you have been given a new pet." % self.pet.get_name()
+
+        if self.pet.check_hotel == False:
+            return "%s is not in the hotel." % self.pet.get_name()
         
         self.pet.change_hotel()
         # TODO send a message that the pet has exited the hotel
@@ -265,7 +278,7 @@ class User(actor):
         with open(self.phone, 'wb') as p:
             pickle.dump(self, p)
         
-        return ""
+        return "%s has been taken out of the hotel." % self.pet.get_name()
 
     # returns string of pet's values
     def status_pet(self):
@@ -278,7 +291,11 @@ class User(actor):
         status += "You have %d point" % self.points
         if self.points != 1:
             status += "s"
-        status += " to spend."
+        status += " to spend.\n"
+        status += "%s is " % self.pet.get_name()
+        if not self.pet.check_hotel():
+            status += "not "
+        status += "in the BORB hotel."
 
         return status
 
