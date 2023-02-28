@@ -213,7 +213,7 @@
     },
     
     "get hotel":{
-        "Content":"Your pet has been checked into BORB hotel. No point penalties will be deducted for 24 hours.",
+        "Content":"[name] has been checked into BORB hotel. No point penalties will be deducted.",
         "next_state":"idle"
     },
 

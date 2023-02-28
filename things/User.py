@@ -100,7 +100,7 @@ class User(actor):
             if type(MY_GAME_LOGIC[ self.state ]['content']) is str:
                 output.append(MY_GAME_LOGIC[ self.state ]['content'])
             if self.state == "leave hotel":
-                self.check_out_pet
+                self.check_out_pet()
             if self.state == "points amount":
                 output[-1] = output[-1].replace("[points]", str(self.points))
                 print("triggered")
